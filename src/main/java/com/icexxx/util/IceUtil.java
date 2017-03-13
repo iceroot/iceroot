@@ -892,4 +892,22 @@ public class IceUtil {
         }
         return null;
     }
+    
+    /**
+     * 获取当前类的类名
+     * @param obj 当前类上下文(默认传入this.如果是静态方法传入null,传入null效率会比传入this低一些) 
+     * @return 当前类的类名
+     */
+    public static String getClassName(final Object obj) {
+        if (obj != null) {
+            String className = new Object() {
+                public String getName() {
+                    return obj.getClass().getName();
+                }
+            }.getName();
+            return className;
+        } else {
+            return Thread.currentThread().getStackTrace()[2].getClassName();
+        }
+    }
 }
