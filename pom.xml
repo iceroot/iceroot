@@ -26,14 +26,9 @@
   </developers>
   
   <scm>
-      <connection>
-         scm:git:https://github.com/iceroot/iceroot.git
-      </connection>
-      <developerConnection>
-         scm:git:https://github.com/iceroot/iceroot.git
-      </developerConnection>
-      <url>https://github.com/iceroot/iceroot</url>
-      <tag>v1.0.0</tag>
+      <connection>scm:git:https://github.com/iceroot/iceroot.git</connection>
+      <developerConnection>scm:git:https://github.com/iceroot/iceroot.git</developerConnection>
+      <url>https://github.com/iceroot/iceroot.git</url>
   </scm>
   
   <properties>
@@ -119,7 +114,7 @@
       <distributionManagement>
       <repository>
         <id>oss</id>
-        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
       </repository>
        <snapshotRepository>
         <id>oss</id>
