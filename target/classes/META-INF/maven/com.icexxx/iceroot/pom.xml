@@ -54,17 +54,6 @@
     <id>release</id>
     <build>
         <plugins>
-            <plugin>
-               <groupId>org.sonatype.plugins</groupId>
-               <artifactId>nexus-staging-maven-plugin</artifactId>
-               <version>1.6.3</version>
-               <extensions>true</extensions>
-               <configuration>
-                 <serverId>oss</serverId>
-                 <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                 <autoReleaseAfterClose>true</autoReleaseAfterClose>
-               </configuration>
-             </plugin>
              <plugin>
                  <groupId>org.apache.maven.plugins</groupId>
                  <artifactId>maven-release-plugin</artifactId>
@@ -127,6 +116,16 @@
             </plugin>
          </plugins>
       </build>
+      <distributionManagement>
+      <repository>
+        <id>oss</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      </repository>
+       <snapshotRepository>
+        <id>oss</id>
+        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+       </snapshotRepository>
+      </distributionManagement>
     </profile>
   </profiles>
 </project>

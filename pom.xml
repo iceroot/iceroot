@@ -119,11 +119,11 @@
       <distributionManagement>
       <repository>
         <id>oss</id>
-        <url>http://172.0.0.1:8081/nexus/content/repositories/releases/</url>
+        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
       </repository>
        <snapshotRepository>
         <id>oss</id>
-        <url>http://127.0.0.1:8081/nexus/content/repositories/snapshots/</url>
+        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
        </snapshotRepository>
       </distributionManagement>
     </profile>
