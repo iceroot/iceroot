@@ -112,14 +112,14 @@
          </plugins>
       </build>
       <distributionManagement>
-      <repository>
-        <id>oss</id>
-        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-      </repository>
        <snapshotRepository>
         <id>oss</id>
-        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
        </snapshotRepository>
+      <repository>
+        <id>oss</id>
+        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      </repository>
       </distributionManagement>
     </profile>
   </profiles>
