@@ -1,5 +1,5 @@
 package zztest;
 
 public enum Type {
-    CLICK,VIEW
+    CLICK, VIEW
 }

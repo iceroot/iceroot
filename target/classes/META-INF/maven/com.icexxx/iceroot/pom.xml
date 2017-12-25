@@ -4,123 +4,140 @@
 
   <groupId>com.icexxx</groupId>
   <artifactId>iceroot</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <packaging>jar</packaging>
 
   <name>iceroot</name>
-  <description>a java base tool class</description>
   <url>http://maven.apache.org</url>
-
+  <description>java basic tools.</description>
   <licenses>
-     <license>
-       <name>The Apache License, Version 2.0</name>
-       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-     </license>
+       <license>
+           <name>The Apache License, Version 2.0</name>
+           <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+       </license>
   </licenses>
-   
+
   <developers>
-    <developer>
-      <name>IceWwater</name>
-      <email>zxcyhn@126.com</email>
-    </developer>
+      <developer>
+          <name>IceWwater</name>
+          <email>zxcyhn@126.com</email>
+      </developer>
   </developers>
-  
   <scm>
       <connection>scm:git:https://github.com/iceroot/iceroot.git</connection>
-      <developerConnection>scm:git:https://github.com/iceroot/iceroot.git</developerConnection>
+          <developerConnection>scm:git:https://github.com/iceroot/iceroot.git</developerConnection>
       <url>https://github.com/iceroot/iceroot.git</url>
   </scm>
-  
+  <dependencies>
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.11</version>
+          <scope>test</scope>
+      </dependency>
+  </dependencies>
+  <distributionManagement>
+      <snapshotRepository>
+           <id>oss</id>
+           <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      </snapshotRepository>
+      <repository>
+            <id>oss</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      </repository>
+  </distributionManagement>
+
+  <issueManagement>
+      <system>Github Issue</system>
+      <url>https://github.com/iceroot/iceroot.git</url>
+  </issueManagement>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  
-  <profiles>
-    <profile> 
-    <id>release</id>
     <build>
         <plugins>
-             <plugin>
-                 <groupId>org.apache.maven.plugins</groupId>
-                 <artifactId>maven-release-plugin</artifactId>
-                 <version>2.5</version>
-                 <configuration>
-                   <autoVersionSubmodules>true</autoVersionSubmodules>
-                   <useReleaseProfile>false</useReleaseProfile>
-                   <releaseProfiles>release</releaseProfiles>
-                   <goals>deploy</goals>
-                 </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
+                <version>3.5.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
-            </plugin>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-gpg-plugin</artifactId>
-               <version>1.5</version>
-               <executions>
-                 <execution>
-                   <id>sign-artifacts</id>
-                   <phase>verify</phase>
-                   <goals>
-                     <goal>sign</goal>
-                   </goals>
-                 </execution>
-               </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <version>2.10.4</version>
+                <configuration>
+                    <charset>UTF-8</charset>
+                    <encoding>UTF-8</encoding>
+                    <aggregate>true</aggregate>
+                </configuration>
             </plugin>
-         </plugins>
-      </build>
-      <distributionManagement>
-       <snapshotRepository>
-        <id>oss</id>
-        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-       </snapshotRepository>
-      <repository>
-        <id>oss</id>
-        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-      </repository>
-      </distributionManagement>
-    </profile>
-  </profiles>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>oss</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>oss</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+            <build>
+                <plugins>
+                    <!-- Source -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Javadoc -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.10.4</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Gpg Signature -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
