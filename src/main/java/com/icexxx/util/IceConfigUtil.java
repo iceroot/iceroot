@@ -13,7 +13,7 @@ import java.util.Properties;
  * 配置文件工具类
  * 
  * @author IceWater
- * @version 1.0
+ * @version 1.0.0
  */
 public class IceConfigUtil {
     /**
@@ -21,7 +21,7 @@ public class IceConfigUtil {
      * 
      * @param fileName 配置文件的名称
      * @return 获取的配置文件中的值
-     * @since 1.0
+     * @since 1.0.0
      */
     public static Properties conf(String fileName) {
         fileName = reset(fileName);

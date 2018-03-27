@@ -4,7 +4,7 @@ package com.icexxx.util;
  * 含有名称的包装体
  * 
  * @author IceWater
- * @version 2.1
+ * @version 2.0.1
  * @param <T> 泛型
  */
 public class IceBox<T> {

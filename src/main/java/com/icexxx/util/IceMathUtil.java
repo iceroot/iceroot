@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  * 数学工具类 主要处理大实数运算问题
  * 
  * @author IceWater
- * @version 1.0
+ * @version 1.0.0
  */
 public class IceMathUtil {
     /**

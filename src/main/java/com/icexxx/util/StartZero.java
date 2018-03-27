@@ -4,7 +4,7 @@ package com.icexxx.util;
  * 从零开始计数,第一个用零表示
  * 
  * @author IceWater
- * @version 2.1
+ * @version 2.0.1
  */
 public class StartZero {
     public static final int ONE = 0;

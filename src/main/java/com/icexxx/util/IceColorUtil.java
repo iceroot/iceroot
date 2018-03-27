@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
  * 图片颜色相关工具类
  * 
  * @author IceWater
- * @version 2.1
+ * @version 2.0.1
  */
 public class IceColorUtil {
     /**

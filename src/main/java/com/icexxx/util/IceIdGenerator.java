@@ -4,7 +4,7 @@ package com.icexxx.util;
  * id生成器工具类,处理多线程问题
  * 
  * @author IceWater
- * @version 1.0
+ * @version 1.0.0
  */
 public class IceIdGenerator {
     private static long index = 0L;

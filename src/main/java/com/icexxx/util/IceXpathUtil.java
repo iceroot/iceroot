@@ -22,7 +22,7 @@ import org.w3c.dom.Element;
  * xpath工具类
  * 
  * @author IceWater
- * @version 2.1
+ * @version 2.0.1
  */
 public class IceXpathUtil {
     /**
@@ -31,7 +31,7 @@ public class IceXpathUtil {
      * @param fileName xml文件位置
      * @param xpathExpression xpath表达式
      * @return 获取的属性值
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String string(String fileName, String xpathExpression) {
         TransformerFactory transFact = TransformerFactory.newInstance();

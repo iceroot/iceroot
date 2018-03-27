@@ -29,14 +29,14 @@ import java.util.prefs.Preferences;
  * 综合工具类
  * 
  * @author IceWater
- * @version 1.0
+ * @version 1.0.0
  */
 public class IceUtil {
     /**
      * 生成uuid
      * 
      * @return 生成的uuid
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String uuid() {
         return UUID.randomUUID().toString().replace("-", "");
@@ -47,7 +47,7 @@ public class IceUtil {
      * 
      * @param strs 需要转换的String数组
      * @return 转换后的Integer数组
-     * @since 1.0
+     * @since 1.0.0
      */
     public static Integer[] convert2Int(String[] strs) {
         Integer[] nums = new Integer[strs.length];
@@ -65,7 +65,7 @@ public class IceUtil {
      * 延时若干毫秒
      * 
      * @param milliSecond 需要延时的毫秒数
-     * @since 1.0
+     * @since 1.0.0
      */
     public static void sleep(long milliSecond) {
         try {
@@ -80,7 +80,7 @@ public class IceUtil {
      * 
      * @param str 日期字符串
      * @return 解析后的日期
-     * @since 1.0
+     * @since 1.0.0
      */
     public static Date parseDate(String str) {
         SimpleDateFormat sdf = new SimpleDateFormat(IceConst.DATE_LONG_FORMAT);
@@ -97,7 +97,7 @@ public class IceUtil {
      * @param str 日期字符串
      * @param formatStr 日期格式
      * @return 解析后的日期
-     * @since 1.0
+     * @since 1.0.0
      */
     public static Date parseDate(String str, String formatStr) {
         SimpleDateFormat sdf = new SimpleDateFormat(formatStr);
@@ -114,7 +114,7 @@ public class IceUtil {
      * @param date 需要格式化的日期
      * @param formatStr 日期格式
      * @return 格式化后的日期字符串
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String formatDate(Date date, String formatStr) {
         SimpleDateFormat sdf = new SimpleDateFormat(formatStr);
@@ -127,7 +127,7 @@ public class IceUtil {
      * @param dateStart 开始时间
      * @param dateEnd 结束时间
      * @return 两个日期间隔的天数
-     * @since 1.0
+     * @since 1.0.0
      */
     public static int dayLength(Date dateStart, Date dateEnd) {
         int sign = 1;
@@ -159,7 +159,7 @@ public class IceUtil {
      * @param left 左边的分隔符(从左边查找)
      * @param right 右边的分隔符(从右边查找)
      * @return 中间的字符串
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String between(String str, String left, String right) {
         int leftIndex = str.indexOf(left);
@@ -178,7 +178,7 @@ public class IceUtil {
      * 
      * @param num 需要四舍五入的数字
      * @return 四舍五入后的字符串
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String round(Double num) {
         return String.format("%.2f", num);
@@ -189,7 +189,7 @@ public class IceUtil {
      * 
      * @param num 需要四舍五入的数字
      * @return 四舍五入后的字符串
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String round(int num) {
         return num + ".00";
@@ -201,7 +201,7 @@ public class IceUtil {
      * @param list 原始集合
      * @param <T> 泛型
      * @return 集合中的第一个元素
-     * @since 1.0
+     * @since 1.0.0
      */
     public static <T> T first(List<T> list) {
         if (list == null || list.size() == 0) {
@@ -217,7 +217,7 @@ public class IceUtil {
      * @param array 原始数组
      * @param <T> 泛型
      * @return 数组中的第一个元素
-     * @since 1.0
+     * @since 1.0.0
      */
     public static <T> T first(T[] array) {
         if (array == null || array.length == 0) {
@@ -232,7 +232,7 @@ public class IceUtil {
      * 
      * @param timeStr 字符串时分秒(HH:mm:ss)格式
      * @return 时分秒转换后的秒数
-     * @since 1.0
+     * @since 1.0.0
      */
     public static int time2second(String timeStr) {
         String[] hms = timeStr.split(":");
@@ -253,7 +253,7 @@ public class IceUtil {
      * 
      * @param seconds 需要转换的秒数
      * @return 转换后的字符串
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String second2time(int seconds) {
         int hour = seconds / 3600;
@@ -283,7 +283,7 @@ public class IceUtil {
      * 
      * @param str 原始字符串
      * @return 转换后的字符串
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String camelCase(String str) {
         StringBuilder sb = new StringBuilder();
@@ -310,7 +310,7 @@ public class IceUtil {
      * 
      * @param str 原始字符串
      * @return 转换后的字符串
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String underLine(String str) {
         StringBuilder sb = new StringBuilder();
@@ -331,7 +331,7 @@ public class IceUtil {
      * @param numStr 需要转换的字符串
      * @param defaultValue 无法转换时的默认值
      * @return 转换后的int值
-     * @since 1.0
+     * @since 1.0.0
      */
     public static int toInt(String numStr, int defaultValue) {
         try {
@@ -347,7 +347,7 @@ public class IceUtil {
      * @param enm 需要比较的枚举值
      * @param enumValue 需要比较的字符串
      * @return 比较结果
-     * @since 1.0
+     * @since 1.0.0
      */
     public static boolean equalsEnum(Enum<?> enm, String enumValue) {
         if (enm == null) {
@@ -371,7 +371,7 @@ public class IceUtil {
      * @param enm 第一个枚举变量
      * @param enumValue 第二个枚举变量
      * @return 比较结果
-     * @since 1.0
+     * @since 1.0.0
      */
     public static boolean equalsEnum(Enum<?> enm, Enum<?> enumValue) {
         if (enm == null) {
@@ -396,7 +396,7 @@ public class IceUtil {
      * @param enumValue 需要比较的字符串
      * @param ignoreCase 是否忽略大小写
      * @return 比较结果
-     * @since 1.0
+     * @since 1.0.0
      */
     public static boolean equalsEnum(Enum<?> enm, String enumValue, boolean ignoreCase) {
         if (enm == null) {
@@ -425,7 +425,7 @@ public class IceUtil {
      * @param pageCount 总页数
      * @param displayCount 每屏展示的页数
      * @return 分页条
-     * @since 1.0
+     * @since 1.0.0
      */
     public static int[] rainbow(int currentPage, int pageCount, int displayCount) {// TODO
         boolean isEven = true;
@@ -470,7 +470,7 @@ public class IceUtil {
      * @param currentPage 当前页
      * @param pageCount 总页数
      * @return 分页条
-     * @since 1.0
+     * @since 1.0.0
      */
     public static int[] rainbow(int currentPage, int pageCount) {
         return rainbow(currentPage, pageCount, 10);
@@ -481,7 +481,7 @@ public class IceUtil {
      * 
      * @param year 需要判断闰年的年份
      * @return 是否为闰年
-     * @since 1.0
+     * @since 1.0.0
      */
     public static boolean isLeapYear(int year) {
         if (year < 1) {
@@ -510,7 +510,7 @@ public class IceUtil {
      * @param year 年份
      * @param month 月数
      * @return 该月的天数
-     * @since 1.0
+     * @since 1.0.0
      */
     public static int monthDays(int year, int month) {
         if (month == 2) {
@@ -531,7 +531,7 @@ public class IceUtil {
      * 
      * @param fullName 原来的路径
      * @return 去掉扩展名的路径
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String pathRemoveExt(String fullName) {
         fullName = fullName.replace("\\", "/");
@@ -549,7 +549,7 @@ public class IceUtil {
      * @param key 环境变量的名称
      * @param value 环境变量的值
      * @return 是否存在该名称该值的环境变量
-     * @since 1.0
+     * @since 1.0.0
      */
     public static boolean hasEnv(String key, String value) {
         if (value == null || "".equals(value.trim())) {
@@ -563,7 +563,7 @@ public class IceUtil {
      * 判断是否为开发模式
      * 
      * @return 是否为开发模式
-     * @since 1.0
+     * @since 1.0.0
      */
     public static boolean isDevMode() {
         return hasEnv("dev_java_mode", "_programming_mode_");
@@ -574,7 +574,7 @@ public class IceUtil {
      * 
      * @param key 环境数据键名称
      * @param value 环境数据值名称
-     * @since 1.0
+     * @since 1.0.0
      */
     public static void initEnv(String key, String value) {
         Preferences preferences = Preferences.systemRoot().node("/ice_water");
@@ -591,7 +591,7 @@ public class IceUtil {
      * @param start 需要屏蔽的起始位置
      * @param end 需要屏蔽的结束位置
      * @return 结果字符串
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String mistWord(String str, int start, int end) {
         if (str == null) {
@@ -632,7 +632,7 @@ public class IceUtil {
      * @param paramValue 方法值
      * @param paramType 方法类型
      * @return 方法的返回参数(没有返回值返回null)
-     * @since 1.0
+     * @since 1.0.0
      */
     public static Object executeMethod(Object obj, String methodName, Object[] paramValue, Class<?>[] paramType) {
         Object result = null;
@@ -670,7 +670,7 @@ public class IceUtil {
      * @param obj 需要调用方法的对象,静态方法则传入Class对象
      * @param methodName 方法名称
      * @return 方法的返回参数(没有返回值返回null)
-     * @since 1.0
+     * @since 1.0.0
      */
     public static Object executeMethod(Object obj, String methodName) {
         Object[] paramValue = new Object[] {};
@@ -683,7 +683,7 @@ public class IceUtil {
      * 
      * @param numStr 身份证前17位
      * @return 计算的校验值
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String idCardlastValid(String numStr) {
         if (numStr == null) {
@@ -709,7 +709,7 @@ public class IceUtil {
      * 
      * @param numStr 18位证件号
      * @return 校验码是否正确
-     * @since 1.0
+     * @since 1.0.0
      */
     public static boolean idCardValid(String numStr) {
         if (numStr == null) {
@@ -729,7 +729,7 @@ public class IceUtil {
      * @param str 源字符串
      * @param limitChar 分隔符
      * @return 拆分后的字符串
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String[] splitTrim(String str, String limitChar) {
         if (str == null) {
@@ -769,7 +769,7 @@ public class IceUtil {
      * 
      * @param str 需要拆分的字符串
      * @return 拆分后的字符串
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String[] splitTrim(String str) {
         return splitTrim(str, ",");
@@ -780,7 +780,7 @@ public class IceUtil {
      * 
      * @param url jdbc url
      * @return 获取的数据库驱动名称
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String getDriverName(String url) {
         if (url == null || "".equals(url)) {
@@ -831,7 +831,7 @@ public class IceUtil {
      * 
      * @param url jdbc url
      * @return 获取的数据库名称
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String getDatabaseName(String url) {
         if (url == null || "".equals(url)) {
@@ -878,7 +878,7 @@ public class IceUtil {
      * 
      * @param url 需要转换的url
      * @return 转换后的map
-     * @since 1.0
+     * @since 1.0.0
      */
     public static Map<String, String> url2map(String url) {
         int questionIndex = url.indexOf("?");
@@ -910,7 +910,7 @@ public class IceUtil {
      * 
      * @param command 需要执行的命令
      * @return 命令执行后的返回结果
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String cmd(String command) {// linux由于环境问题暂未测试
         String osName = System.getProperty("os.name").toLowerCase();
@@ -964,7 +964,7 @@ public class IceUtil {
      * 
      * @param obj 当前类上下文(默认传入this.如果是静态方法传入null,传入null效率会比传入this低一些)
      * @return 当前类的类名
-     * @since 1.0
+     * @since 1.0.0
      */
     public static String getClassName(final Object obj) {
         if (obj != null) {
@@ -984,7 +984,7 @@ public class IceUtil {
      * 
      * @param str 原始字符串
      * @return 字符串是否为json
-     * @since 2.0
+     * @since 2.0.0
      */
     public static boolean isJson(String str) {
         if (str == null || "".equals(str)) {
@@ -1006,7 +1006,7 @@ public class IceUtil {
      * 
      * @param str 需要替换的字符串
      * @return 替换后的字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String replaceSlash(String str) {
         if (str == null) {
@@ -1023,7 +1023,7 @@ public class IceUtil {
      * 
      * @param str 原始字符串
      * @return 添加百分号以后的字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String like(String str) {
         if (str == null) {
@@ -1039,7 +1039,7 @@ public class IceUtil {
      * 获取桌面位置原始路径(使用操作系统原始分割线)
      * 
      * @return 桌面位置原始路径
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String desktopOriginal() {
         String osName = System.getProperty("os.name");
@@ -1069,7 +1069,7 @@ public class IceUtil {
      * 获取桌面位置标准路径(使用Linux系统分割线)
      * 
      * @return 桌面位置标准路径
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String desktop() {
         return desktopOriginal().replace("\\", "/");
@@ -1080,7 +1080,7 @@ public class IceUtil {
      * 
      * @param dateStr 原始日期字符串
      * @return 标准化后的日期字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String dateStandard(String dateStr) {
         String oldDateStr = dateStr;
@@ -1206,7 +1206,7 @@ public class IceUtil {
      * @param data 需要排序的二维表
      * @param index 排序的列的索引
      * @return 排序好的二维表
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String[][] sortTable(String[][] data, int index) {
         Map<String, String[]> map = new HashMap<String, String[]>();
@@ -1234,7 +1234,7 @@ public class IceUtil {
      * @param index 排序的列的索引
      * @param comparator 排序器
      * @return 排序好的二维表
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String[][] sortTable(String[][] data, int index, Comparator<String> comparator) {
         Map<String, String[]> map = new HashMap<String, String[]>();
@@ -1260,7 +1260,7 @@ public class IceUtil {
      * 
      * @param obj 原始对象
      * @return 转换后的字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String toStringConsiderNull(Object obj) {
         if (obj == null) {
@@ -1275,7 +1275,7 @@ public class IceUtil {
      * 
      * @param str 原始字符串
      * @return 去掉特殊字符后的字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String removeFEFF(String str) {
         return str.replace("\ufeff", "");
@@ -1288,7 +1288,7 @@ public class IceUtil {
      * @param num2 除数
      * @param defaultValue 除数为零使用的默认值
      * @return 计算结果
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String defaultDivisionZero(Double num1, Double num2, String defaultValue) {
         if (num1 == null || num2 == null) {
@@ -1315,7 +1315,7 @@ public class IceUtil {
      * @param list 原始集合
      * @param <T> 泛型
      * @return 去掉第一个元素的新集合
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> List<T> removeFirst(List<T> list) {
         if (list != null && list.size() > 0) {
@@ -1336,7 +1336,7 @@ public class IceUtil {
      * @param list 原始集合
      * @param <T> 泛型
      * @return 去掉最后一个元素的新集合
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> List<T> removeLast(List<T> list) {
         if (list != null && list.size() > 0) {
@@ -1357,7 +1357,7 @@ public class IceUtil {
      * @param list 原始集合
      * @param <T> 泛型
      * @return 新集合
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> List<T> newListIfNull(List<T> list) {
         if (list == null) {
@@ -1373,7 +1373,7 @@ public class IceUtil {
      * @param list 原始集合
      * @param <T> 泛型
      * @return 去掉泛型后的集合
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> List<Map<String, Object>> removeGeneric(List<Map<String, T>> list) {
         if (list == null) {
@@ -1396,7 +1396,7 @@ public class IceUtil {
      * @param prefix 前缀
      * @param suffix 后缀
      * @return 去掉开始和结尾后的字符
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String removeFirstAndLast(String str, String prefix, String suffix) {
         if (str == null) {
@@ -1420,7 +1420,7 @@ public class IceUtil {
      * @param num 原始数据(小数)
      * @param newScale 计算完百分比后小数点后的位数
      * @return 计算结果
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String percentage(Double num, int newScale) {
         BigDecimal decimal = new BigDecimal(num);
@@ -1435,7 +1435,7 @@ public class IceUtil {
      * @param array 原始数组
      * @param <T> 泛型
      * @return 去掉重复后的数组
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> T[] distinct(T[] array) {
         if (array == null) {
@@ -1602,7 +1602,7 @@ public class IceUtil {
      * @param list 原始集合
      * @param <T> 泛型
      * @return 复制后的集合
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> List<T> createList(List<T> list) {
         if (list == null) {
@@ -1623,7 +1623,7 @@ public class IceUtil {
      * @return 复制后的Map
      * @param <K> 泛型Map键
      * @param <V> 泛型Map值
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <K, V> Map<K, V> createMap(Map<K, V> map) {
         if (map == null) {
@@ -1639,7 +1639,7 @@ public class IceUtil {
      * 
      * @param obj 需要判断的对象
      * @return 是否为空字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static boolean isEmpty(Object obj) {
         if (obj == null) {
@@ -1656,7 +1656,7 @@ public class IceUtil {
      * 
      * @param date 原始日期对象
      * @return 日期对象修改时间为中午
-     * @since 2.0
+     * @since 2.0.0
      */
     public static Date noon(Date date) {
         if (date == null) {
@@ -1676,7 +1676,7 @@ public class IceUtil {
      * @param array 原始数组
      * @param <T> 泛型
      * @return 转换后的集合
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> List<T> toList(T[] array) {
         if (array == null) {
@@ -1695,7 +1695,7 @@ public class IceUtil {
      * @param list 原始集合
      * @param <T> 泛型
      * @return 转换后的数组
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> T[] toArray(List<T> list) {
         if (list == null) {
@@ -1712,7 +1712,7 @@ public class IceUtil {
      * @param <K> 泛型Map键
      * @param <V> 泛型Map值
      * @return Map迭代结果
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <K, V> List<Map.Entry<K, V>> forMap(Map<K, V> map) {
         if (map == null) {
@@ -1728,7 +1728,7 @@ public class IceUtil {
      * 
      * @param num 星期序号
      * @return 星期名称
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String weekName(int num) {
         switch (num) {
@@ -1760,7 +1760,7 @@ public class IceUtil {
      * @param size 需要截取的数组长度
      * @param <T> 泛型
      * @return 截取后的新数组
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> T[] subArray(T[] array, int size) {
         if (size < 0) {
@@ -1789,7 +1789,7 @@ public class IceUtil {
      * @param oldStr 需要替换的字符串
      * @param newStr 替换成的字符串
      * @return 替换后的字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String replaceCap(String str, String oldStr, String newStr) {
         if (str == null) {
@@ -1830,7 +1830,7 @@ public class IceUtil {
      * 
      * @param sql 原始sql
      * @return 转换后的sql
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String sqlHtml(String sql) {
         if (sql == null) {
@@ -1849,7 +1849,7 @@ public class IceUtil {
      * 
      * @param sql 原始sql
      * @return 转换后的sql
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String sqlChar(String sql) {
         if (sql == null) {
@@ -1869,7 +1869,7 @@ public class IceUtil {
      * @param ymd1 第一个日期
      * @param ymd2 第二个日期
      * @return 两个日期间隔的月数
-     * @since 2.0
+     * @since 2.0.0
      */
     public static int diffMonth(String ymd1, String ymd2) {
         ymd1 = ymd1.replace(".", "-");
@@ -1898,7 +1898,7 @@ public class IceUtil {
      * @param prefix1 第一个前缀
      * @param prefix2 第二个前缀
      * @return 去掉两个前缀后的字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String removeDoubleFirst(String str, String prefix1, String prefix2) {
         if (str == null) {
@@ -1930,7 +1930,7 @@ public class IceUtil {
      * @param prefix1 第一个前缀
      * @param prefix2 第二个前缀
      * @return 去掉两个后缀以后的字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String removeDoubleLast(String str, String prefix1, String prefix2) {
         if (str == null) {
@@ -1960,7 +1960,7 @@ public class IceUtil {
      * 
      * @param url JDBC url
      * @return 获取的数据库名称
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String urlDatabaseName(String url) {
         if (url == null || "".equals(url)) {
@@ -2000,7 +2000,7 @@ public class IceUtil {
      * @param array 指定的数组
      * @param str 包含的对象
      * @return 是否包含指定字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static boolean contain(String[] array, String str) {
         if (array == null || array.length == 0) {
@@ -2034,7 +2034,7 @@ public class IceUtil {
      * @param oldStr 需要替换的字符串
      * @param newStr 替换成的字符串
      * @return 替换后的字符串
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String replaceQuotationOut(String str, String oldStr, String newStr) {
         if (str == null) {
@@ -2125,7 +2125,7 @@ public class IceUtil {
      * @param table 二维数组
      * @param index 列序号
      * @return 需要获取的二维数组的某一列
-     * @since 2.0
+     * @since 2.0.0
      */
     public static String[] arrayColumn(String[][] table, int index) {
         if (table == null) {
@@ -2151,7 +2151,7 @@ public class IceUtil {
      * @param t 原始数据
      * @param <T> 泛型
      * @return 根据原始数据创建的数组
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> T[] array2simple(T t) {
         if (t == null) {
@@ -2230,7 +2230,7 @@ public class IceUtil {
      * @param t 原始值
      * @param <T> 泛型
      * @return 转换后的List
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <T> List<T> simple2List(T t) {
         if (t == null) {
@@ -2249,7 +2249,7 @@ public class IceUtil {
      * @param <K> 泛型Map键
      * @param <V> 泛型Map值
      * @return 返回的Map
-     * @since 2.0
+     * @since 2.0.0
      */
     public static <K, V> Map<K, V> simple2Map(K key, V value) {
         Map<K, V> map = new HashMap<K, V>();
@@ -2262,7 +2262,7 @@ public class IceUtil {
      * 
      * @param url 原始url
      * @return 是否以http或https开头
-     * @since 2.0
+     * @since 2.0.0
      */
     public static boolean isHttp(String url) {
         if (url == null || "".equals(url)) {
@@ -2282,7 +2282,7 @@ public class IceUtil {
      * @param version1 第一个版本号
      * @param version2 第二个版本号
      * @return 比较结果(-1,1,0) 1小于 0等于 -1大于
-     * @since 2.0
+     * @since 2.0.0
      */
     @Deprecated
     public static int versionCompare(String version1, String version2) {
@@ -2332,7 +2332,7 @@ public class IceUtil {
      * @param version1 第一个版本号
      * @param version2 第二个版本号
      * @return 比较结果(-1,1,0) -1小于 0等于 1大于
-     * @since 2.1
+     * @since 2.0.1
      */
     public static int version(String version1, String version2) {
         if (version1 == null || "".equals(version1)) {
@@ -2380,7 +2380,7 @@ public class IceUtil {
      * 
      * @param list 原始数据
      * @return 原始数据的平均数
-     * @since 2.1
+     * @since 2.0.1
      */
     public static double avg(List<Double> list) {
         if (list == null || list.size() == 0) {
@@ -2400,7 +2400,7 @@ public class IceUtil {
      * @param str 原始字符串
      * @param subStr 子字符串
      * @return 字符串截取结果
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String getLeftFromLeft(String str, String subStr) {
         if (str == null || "".equals(str)) {
@@ -2422,7 +2422,7 @@ public class IceUtil {
      * @param str 原始字符串
      * @param subStr 子字符串
      * @return 字符串截取结果
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String getLeftFromRight(String str, String subStr) {
         if (str == null || "".equals(str)) {
@@ -2444,7 +2444,7 @@ public class IceUtil {
      * @param str 原始字符串
      * @param subStr 子字符串
      * @return 字符串截取结果
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String getRightFromLeft(String str, String subStr) {
         if (str == null || "".equals(str)) {
@@ -2466,7 +2466,7 @@ public class IceUtil {
      * @param str 原始字符串
      * @param subStr 子字符串
      * @return 字符串截取结果
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String getRightFromRight(String str, String subStr) {
         if (str == null || "".equals(str)) {
@@ -2489,7 +2489,7 @@ public class IceUtil {
      * @param left 左边的字符串
      * @param right 右边的字符串
      * @return 拼接后的字符串
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String wrap(String str, String left, String right) {
         StringBuilder sb = new StringBuilder();
@@ -2512,7 +2512,7 @@ public class IceUtil {
      * @param left 左边的子字符串
      * @param right 右边的子字符串
      * @return 切割后的字符串
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String unWrap(String str, String left, String right) {
         if (str == null || "".equals(str)) {
@@ -2538,7 +2538,7 @@ public class IceUtil {
      * @param num2 第二个数字
      * @param num3 第三个数字
      * @return 最大的数字
-     * @since 2.1
+     * @since 2.0.1
      */
     public static double max(double num1, double num2, double num3) {
         double max = num1;
@@ -2558,7 +2558,7 @@ public class IceUtil {
      * @param num2 第二个数字
      * @param num3 第三个数字
      * @return 最小的数字
-     * @since 2.1
+     * @since 2.0.1
      */
     public static int min(int num1, int num2, int num3) {
         int min = num1;
@@ -2578,7 +2578,7 @@ public class IceUtil {
      * @param num2 第二个数字
      * @param num3 第三个数字
      * @return 最大的数字
-     * @since 2.1
+     * @since 2.0.1
      */
     public static int max(int num1, int num2, int num3) {
         int max = num1;
@@ -2598,7 +2598,7 @@ public class IceUtil {
      * @param num2 第二个数字
      * @param num3 第三个数字
      * @return 最小的数字
-     * @since 2.1
+     * @since 2.0.1
      */
     public static double min(double num1, double num2, double num3) {
         double min = num1;
@@ -2616,7 +2616,7 @@ public class IceUtil {
      * 
      * @param str 原始字符串
      * @return 结果字符串
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String removeSlash(String str) {
         if (str == null || "".equals(str.trim())) {
@@ -2634,7 +2634,7 @@ public class IceUtil {
      * 
      * @param str 原始字符串
      * @return 结果字符串
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String addSlash(String str) {
         if (str == null || "".equals(str)) {
@@ -2653,7 +2653,7 @@ public class IceUtil {
      * @param str 原始字符串
      * @param size 截取的字符串个数
      * @return 结果字符串
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String left(String str, int size) {
         if (str == null || "".equals(str)) {
@@ -2682,7 +2682,7 @@ public class IceUtil {
      * @param str 原始字符串
      * @param size 截取的字符串个数
      * @return 结果字符串
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String right(String str, int size) {
         if (str == null || "".equals(str)) {
@@ -2710,7 +2710,7 @@ public class IceUtil {
      * @param str 原始字符串
      * @param offest 移动的位数
      * @return 移位后的字符串
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String move(String str, int offest) {
         if (str == null || "".equals(str)) {
@@ -2735,7 +2735,7 @@ public class IceUtil {
      * @param bys 原始字节数组
      * @param offset 移动量
      * @return 替换后的字节数组
-     * @since 2.1
+     * @since 2.0.1
      */
     public static byte[] replacement(byte[] bys, int offset) {
         if (bys == null) {
@@ -2764,7 +2764,7 @@ public class IceUtil {
      * @param key 键
      * @param value 值
      * @return 返回的新Map
-     * @since 2.1
+     * @since 2.0.1
      */
     public static <K, V> Map<K, V> put(Map<K, V> map, K key, V value) {
         V valueOld = map.get(key);
@@ -2779,7 +2779,7 @@ public class IceUtil {
      * 
      * @param list 原始List
      * @return 转换后的List
-     * @since 2.1
+     * @since 2.0.1
      */
     public static List<String> listString(List<Object> list) {
         if (list == null) {
@@ -2802,7 +2802,7 @@ public class IceUtil {
      * 
      * @param list 原始List
      * @return 转换后的List
-     * @since 2.1
+     * @since 2.0.1
      */
     public static List<String> list(List list) {
         if (list == null) {
@@ -2825,7 +2825,7 @@ public class IceUtil {
      * 
      * @param map 原始Map
      * @return 转换后的Map
-     * @since 2.1
+     * @since 2.0.1
      */
     public static Map<String, String> mapString(Map<String, Object> map) {
         if (map == null) {
@@ -2855,7 +2855,7 @@ public class IceUtil {
      * 
      * @param map 原始Map
      * @return 转换后的Map
-     * @since 2.1
+     * @since 2.0.1
      */
     public static Map<String, String> map(Map map) {
         if (map == null) {
@@ -2886,7 +2886,7 @@ public class IceUtil {
      * @param list 原始集合
      * @param <T> 泛型
      * @return 去重复后的集合
-     * @since 2.1
+     * @since 2.0.1
      */
     public static <T> List<T> deduplication(List<T> list) {
         if (list == null) {
@@ -2918,7 +2918,7 @@ public class IceUtil {
      * 
      * @param str 原始字符串
      * @return 转换后的数字
-     * @since 2.1
+     * @since 2.0.1
      */
     public static Integer parseInt(String str) {
         if (str == null || "".equals(str.trim())) {
@@ -2955,7 +2955,7 @@ public class IceUtil {
      * @param <K> 键
      * @param <V> 值
      * @return 合并后的Map
-     * @since 2.1
+     * @since 2.0.1
      */
     public static <K, V> Map<K, V> join(List<Map<K, V>> list) {
         if (list == null) {
@@ -2977,7 +2977,7 @@ public class IceUtil {
      * @param expression 开闭区间表达式
      * @param num 需要判断的数字
      * @return 判断结果
-     * @since 2.1
+     * @since 2.0.1
      */
     public static boolean contain(String expression, int num) {
         if (expression == null || "".equals(expression.trim())) {
@@ -3042,7 +3042,7 @@ public class IceUtil {
      * 
      * @param fileName 文件(夹)名称
      * @return 是否进行了文件夹创建
-     * @since 2.1
+     * @since 2.0.1
      */
     public static boolean mkdir(String fileName) {
         if (fileName == null || "".equals(fileName.trim())) {
@@ -3078,7 +3078,7 @@ public class IceUtil {
      * 
      * @param str 原始字符串
      * @param value 新值
-     * @since 2.1
+     * @since 2.0.1
      */
     public static void change(String str, String value) {
         try {
@@ -3102,7 +3102,7 @@ public class IceUtil {
      * 
      * @param month 月份序号,从0开始
      * @return 月份名称
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String monthName(int month) {
         switch (month) {
@@ -3140,7 +3140,7 @@ public class IceUtil {
      * 
      * @param str 原始字符串
      * @return 拼接后的新字符串
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String wrapChar(String str) {
         if (str == null) {
@@ -3171,7 +3171,7 @@ public class IceUtil {
      * @param str 原始字符串
      * @param map 替换的字符串键值表
      * @return 替换后的字符串
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String template(String str, Map<String, String> map) {
         if (str == null || "".equals(str.trim())) {

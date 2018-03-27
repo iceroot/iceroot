@@ -4,7 +4,7 @@ package com.icexxx.util;
  * 模板工具类
  * 
  * @author IceWater
- * @version 2.0
+ * @version 2.0.0
  */
 public class IceGenUtil {
     public static String forij() {

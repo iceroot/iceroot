@@ -4,7 +4,7 @@ package com.icexxx.util;
  * 分页记录总数偏移量包装体
  * 
  * @author IceWater
- * @version 2.0
+ * @version 2.0.0
  */
 public class IcePageWrap {
     private int count;

@@ -7,7 +7,7 @@ import java.util.Map;
  * 拼音工具类 对不在音序表范围的常用字进行特殊处理
  * 
  * @author IceWater
- * @version 2.1
+ * @version 2.0.1
  */
 public class IcePinyin {
     private static Map<String, String> map;
@@ -17,7 +17,7 @@ public class IcePinyin {
      * 
      * @param str 单个汉字
      * @return 汉字对应的拼音
-     * @since 2.1
+     * @since 2.0.1
      */
     public static String getPinyin(String str) {
         if (map == null) {

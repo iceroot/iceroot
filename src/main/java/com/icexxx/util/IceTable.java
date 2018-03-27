@@ -6,7 +6,7 @@ import java.util.List;
  * 数据库表对象
  * 
  * @author IceWater
- * @version 2.1
+ * @version 2.0.1
  */
 public class IceTable {
     private String tableName;

@@ -13,7 +13,7 @@ import java.util.Set;
  * 树结构的相关操作
  * 
  * @author IceWater
- * @version 2.1
+ * @version 2.0.1
  */
 public class IceTreeUtil {
     /**
@@ -22,7 +22,7 @@ public class IceTreeUtil {
      * @param tableList 原始二维表
      * @param <T> 泛型
      * @return 生成的结果树
-     * @since 2.1
+     * @since 2.0.1
      */
     public static <T> IceTree tree(List<TableUseInTree<T>> tableList) {
         Map<String, IceTree> map = new HashMap<String, IceTree>();

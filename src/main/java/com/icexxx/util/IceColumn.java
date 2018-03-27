@@ -4,7 +4,7 @@ package com.icexxx.util;
  * 数据库列对象
  * 
  * @author IceWater
- * @version 2.0
+ * @version 2.0.0
  */
 public class IceColumn {
     private String columnName;

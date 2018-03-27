@@ -4,7 +4,7 @@ package com.icexxx.util;
  * IceTree原始数据类型
  * 
  * @author IceWater
- * @version 2.1
+ * @version 2.0.1
  * @param <T> 泛型
  */
 public class TableUseInTree<T> {

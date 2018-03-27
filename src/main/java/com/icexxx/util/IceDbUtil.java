@@ -18,7 +18,7 @@ import java.util.Map;
  * 数据库操作相关工具类
  * 
  * @author IceWater
- * @version 1.0
+ * @version 1.0.0
  */
 public class IceDbUtil {
     /**
