@@ -199,7 +199,7 @@ public class IceUtil {
      * 获取集合的第一个元素
      * 
      * @param list 原始集合
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 集合中的第一个元素
      * @since 1.0
      */
@@ -215,7 +215,7 @@ public class IceUtil {
      * 获取数组中的第一个元素
      * 
      * @param array 原始数组
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 数组中的第一个元素
      * @since 1.0
      */
@@ -1313,7 +1313,7 @@ public class IceUtil {
      * 去掉集合中的第一个元素
      * 
      * @param list 原始集合
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 去掉第一个元素的新集合
      * @since 2.0
      */
@@ -1334,7 +1334,7 @@ public class IceUtil {
      * 去掉集合中的最后一个元素
      * 
      * @param list 原始集合
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 去掉最后一个元素的新集合
      * @since 2.0
      */
@@ -1355,7 +1355,7 @@ public class IceUtil {
      * 如果集合不存在创建新集合,否则使用原来的集合
      * 
      * @param list 原始集合
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 新集合
      * @since 2.0
      */
@@ -1371,7 +1371,7 @@ public class IceUtil {
      * 去掉List中Map元素的泛型
      * 
      * @param list 原始集合
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 去掉泛型后的集合
      * @since 2.0
      */
@@ -1433,7 +1433,7 @@ public class IceUtil {
      * 数组去重复
      * 
      * @param array 原始数组
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 去掉重复后的数组
      * @since 2.0
      */
@@ -1600,7 +1600,7 @@ public class IceUtil {
      * 复制集合
      * 
      * @param list 原始集合
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 复制后的集合
      * @since 2.0
      */
@@ -1621,8 +1621,8 @@ public class IceUtil {
      * 
      * @param map 原始Map
      * @return 复制后的Map
-     * @param &lt;K&gt; 泛型Map键
-     * @param &lt;V&gt; 泛型Map值
+     * @param <K> 泛型Map键
+     * @param <V> 泛型Map值
      * @since 2.0
      */
     public static <K, V> Map<K, V> createMap(Map<K, V> map) {
@@ -1674,7 +1674,7 @@ public class IceUtil {
      * 数组转为集合
      * 
      * @param array 原始数组
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 转换后的集合
      * @since 2.0
      */
@@ -1693,7 +1693,7 @@ public class IceUtil {
      * 集合转为数组
      * 
      * @param list 原始集合
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 转换后的数组
      * @since 2.0
      */
@@ -1709,8 +1709,8 @@ public class IceUtil {
      * 对Map进行迭代
      * 
      * @param map 原始Map
-     * @param &lt;K&gt; 泛型Map键
-     * @param &lt;V&gt; 泛型Map值
+     * @param <K> 泛型Map键
+     * @param <V> 泛型Map值
      * @return Map迭代结果
      * @since 2.0
      */
@@ -1758,7 +1758,7 @@ public class IceUtil {
      * 
      * @param array 原始数组
      * @param size 需要截取的数组长度
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 截取后的新数组
      * @since 2.0
      */
@@ -2149,7 +2149,7 @@ public class IceUtil {
      * 将单个值变为数组
      * 
      * @param t 原始数据
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 根据原始数据创建的数组
      * @since 2.0
      */
@@ -2228,7 +2228,7 @@ public class IceUtil {
      * 单个值转为List
      * 
      * @param t 原始值
-     * @param &lt;T&gt; 泛型
+     * @param <T> 泛型
      * @return 转换后的List
      * @since 2.0
      */
@@ -2246,8 +2246,8 @@ public class IceUtil {
      * 
      * @param key 传入的键
      * @param value 传入的值
-     * @param &lt;K&gt; 泛型Map键
-     * @param &lt;V&gt; 泛型Map值
+     * @param <K> 泛型Map键
+     * @param <V> 泛型Map值
      * @return 返回的Map
      * @since 2.0
      */
@@ -2759,6 +2759,8 @@ public class IceUtil {
      * 向map添加数据,重复时保留原来的
      * 
      * @param map 原始Map
+     * @param <K> key 键
+     * @param <V> value 值
      * @param key 键
      * @param value 值
      * @return 返回的新Map
@@ -2882,6 +2884,7 @@ public class IceUtil {
      * 集合完全去重复(只要重复了就删除)
      * 
      * @param list 原始集合
+     * @param <T> 泛型
      * @return 去重复后的集合
      * @since 2.1
      */
@@ -2949,6 +2952,8 @@ public class IceUtil {
      * 多个map合并
      * 
      * @param list 存放map的集合
+     * @param <K> 键
+     * @param <V> 值
      * @return 合并后的Map
      * @since 2.1
      */

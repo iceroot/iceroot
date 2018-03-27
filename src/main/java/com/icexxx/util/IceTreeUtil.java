@@ -20,6 +20,7 @@ public class IceTreeUtil {
      * 二维表转换为树形结构
      * 
      * @param tableList 原始二维表
+     * @param <T> 泛型
      * @return 生成的结果树
      * @since 2.1
      */
