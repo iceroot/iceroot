@@ -1,9 +1,11 @@
 package com.icexxx.util;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
@@ -15,6 +17,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -52,7 +55,6 @@ public class IceUtil {
             try {
                 nums[i] = Integer.parseInt(strs[i]);
             } catch (NumberFormatException e) {
-                // e.printStackTrace();
                 nums[i] = null;
             }
         }
@@ -85,7 +87,6 @@ public class IceUtil {
         try {
             return sdf.parse(str);
         } catch (ParseException e) {
-            // e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
@@ -103,7 +104,6 @@ public class IceUtil {
         try {
             return sdf.parse(str);
         } catch (ParseException e) {
-            // e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
@@ -199,7 +199,7 @@ public class IceUtil {
      * 获取集合的第一个元素
      * 
      * @param list 原始集合
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 集合中的第一个元素
      * @since 1.0
      */
@@ -215,7 +215,7 @@ public class IceUtil {
      * 获取数组中的第一个元素
      * 
      * @param array 原始数组
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 数组中的第一个元素
      * @since 1.0
      */
@@ -456,14 +456,9 @@ public class IceUtil {
                 }
             }
         } else {
-            // if(currentPage<=pageCount){
             for (int i = 0; i < result.length; i++) {
                 result[i] = i + 1;
             }
-            // }else{
-            // throw new
-            // RuntimeException("当前页"+currentPage+"不应该大于总页数"+pageCount);
-            // }
         }
         return result;
 
@@ -1318,7 +1313,7 @@ public class IceUtil {
      * 去掉集合中的第一个元素
      * 
      * @param list 原始集合
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 去掉第一个元素的新集合
      * @since 2.0
      */
@@ -1339,7 +1334,7 @@ public class IceUtil {
      * 去掉集合中的最后一个元素
      * 
      * @param list 原始集合
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 去掉最后一个元素的新集合
      * @since 2.0
      */
@@ -1360,7 +1355,7 @@ public class IceUtil {
      * 如果集合不存在创建新集合,否则使用原来的集合
      * 
      * @param list 原始集合
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 新集合
      * @since 2.0
      */
@@ -1376,7 +1371,7 @@ public class IceUtil {
      * 去掉List中Map元素的泛型
      * 
      * @param list 原始集合
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 去掉泛型后的集合
      * @since 2.0
      */
@@ -1438,7 +1433,7 @@ public class IceUtil {
      * 数组去重复
      * 
      * @param array 原始数组
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 去掉重复后的数组
      * @since 2.0
      */
@@ -1605,7 +1600,7 @@ public class IceUtil {
      * 复制集合
      * 
      * @param list 原始集合
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 复制后的集合
      * @since 2.0
      */
@@ -1626,8 +1621,8 @@ public class IceUtil {
      * 
      * @param map 原始Map
      * @return 复制后的Map
-     * @param <K> 泛型Map键
-     * @param <V> 泛型Map值
+     * @param &lt;K&gt; 泛型Map键
+     * @param &lt;V&gt; 泛型Map值
      * @since 2.0
      */
     public static <K, V> Map<K, V> createMap(Map<K, V> map) {
@@ -1679,7 +1674,7 @@ public class IceUtil {
      * 数组转为集合
      * 
      * @param array 原始数组
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 转换后的集合
      * @since 2.0
      */
@@ -1698,7 +1693,7 @@ public class IceUtil {
      * 集合转为数组
      * 
      * @param list 原始集合
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 转换后的数组
      * @since 2.0
      */
@@ -1714,8 +1709,8 @@ public class IceUtil {
      * 对Map进行迭代
      * 
      * @param map 原始Map
-     * @param <K> 泛型Map键
-     * @param <V> 泛型Map值
+     * @param &lt;K&gt; 泛型Map键
+     * @param &lt;V&gt; 泛型Map值
      * @return Map迭代结果
      * @since 2.0
      */
@@ -1763,7 +1758,7 @@ public class IceUtil {
      * 
      * @param array 原始数组
      * @param size 需要截取的数组长度
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 截取后的新数组
      * @since 2.0
      */
@@ -2154,7 +2149,7 @@ public class IceUtil {
      * 将单个值变为数组
      * 
      * @param t 原始数据
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 根据原始数据创建的数组
      * @since 2.0
      */
@@ -2233,7 +2228,7 @@ public class IceUtil {
      * 单个值转为List
      * 
      * @param t 原始值
-     * @param <T> 泛型
+     * @param &lt;T&gt; 泛型
      * @return 转换后的List
      * @since 2.0
      */
@@ -2251,8 +2246,8 @@ public class IceUtil {
      * 
      * @param key 传入的键
      * @param value 传入的值
-     * @param <K> 泛型Map键
-     * @param <V> 泛型Map值
+     * @param &lt;K&gt; 泛型Map键
+     * @param &lt;V&gt; 泛型Map值
      * @return 返回的Map
      * @since 2.0
      */
@@ -2286,9 +2281,10 @@ public class IceUtil {
      * 
      * @param version1 第一个版本号
      * @param version2 第二个版本号
-     * @return 比较结果(-1,1,0)
+     * @return 比较结果(-1,1,0) 1小于 0等于 -1大于
      * @since 2.0
      */
+    @Deprecated
     public static int versionCompare(String version1, String version2) {
         if (version1 == null || "".equals(version1)) {
             throw new RuntimeException("第一个版本号为空或空字符串");
@@ -2328,5 +2324,892 @@ public class IceUtil {
         } else {
             return 0;
         }
+    }
+
+    /**
+     * 比较两个版本号
+     * 
+     * @param version1 第一个版本号
+     * @param version2 第二个版本号
+     * @return 比较结果(-1,1,0) -1小于 0等于 1大于
+     * @since 2.1
+     */
+    public static int version(String version1, String version2) {
+        if (version1 == null || "".equals(version1)) {
+            throw new RuntimeException("第一个版本号为空或空字符串");
+        }
+        if (version2 == null || "".equals(version2)) {
+            throw new RuntimeException("第二个版本号为空或空字符串");
+        }
+        version1 = version1.trim();
+        version2 = version2.trim();
+        if (version1.toLowerCase().startsWith("v")) {
+            version1 = version1.substring(1);
+        }
+        if (version2.toLowerCase().startsWith("v")) {
+            version2 = version2.substring(1);
+        }
+        String[] array1 = version1.split("\\.");
+        String[] array2 = version2.split("\\.");
+        int length1 = array1.length;
+        int length2 = array2.length;
+        int min = length1;
+        if (length2 < length1) {
+            min = length2;
+        }
+        for (int i = 0; i < min; i++) {
+            int num1 = Integer.parseInt(array1[i]);
+            int num2 = Integer.parseInt(array2[i]);
+            if (num1 > num2) {
+                return 1;
+            } else if (num1 < num2) {
+                return -1;
+            }
+        }
+        if (length1 > length2) {
+            return 1;
+        } else if (length1 < length2) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * 求平均数
+     * 
+     * @param list 原始数据
+     * @return 原始数据的平均数
+     * @since 2.1
+     */
+    public static double avg(List<Double> list) {
+        if (list == null || list.size() == 0) {
+            return 0;
+        }
+        double sum = 0d;
+        int size = list.size();
+        for (int i = 0; i < size; i++) {
+            sum += list.get(i);
+        }
+        return sum / size;
+    }
+
+    /**
+     * 获取从左数左边的字符串
+     * 
+     * @param str 原始字符串
+     * @param subStr 子字符串
+     * @return 字符串截取结果
+     * @since 2.1
+     */
+    public static String getLeftFromLeft(String str, String subStr) {
+        if (str == null || "".equals(str)) {
+            return str;
+        }
+        if (subStr == null || "".equals(subStr)) {
+            return str;
+        }
+        int index = str.indexOf(subStr);
+        if (index == -1) {
+            return str;
+        }
+        return str.substring(0, index);
+    }
+
+    /**
+     * 获取从右数左边的字符串
+     * 
+     * @param str 原始字符串
+     * @param subStr 子字符串
+     * @return 字符串截取结果
+     * @since 2.1
+     */
+    public static String getLeftFromRight(String str, String subStr) {
+        if (str == null || "".equals(str)) {
+            return str;
+        }
+        if (subStr == null || "".equals(subStr)) {
+            return str;
+        }
+        int index = str.lastIndexOf(subStr);
+        if (index == -1) {
+            return str;
+        }
+        return str.substring(0, index);
+    }
+
+    /**
+     * 获取从左数右边的字符串
+     * 
+     * @param str 原始字符串
+     * @param subStr 子字符串
+     * @return 字符串截取结果
+     * @since 2.1
+     */
+    public static String getRightFromLeft(String str, String subStr) {
+        if (str == null || "".equals(str)) {
+            return str;
+        }
+        if (subStr == null || "".equals(subStr)) {
+            return str;
+        }
+        int index = str.indexOf(subStr);
+        if (index == -1) {
+            return str;
+        }
+        return str.substring(index + subStr.length());
+    }
+
+    /**
+     * 获取从右数右边的字符串
+     * 
+     * @param str 原始字符串
+     * @param subStr 子字符串
+     * @return 字符串截取结果
+     * @since 2.1
+     */
+    public static String getRightFromRight(String str, String subStr) {
+        if (str == null || "".equals(str)) {
+            return str;
+        }
+        if (subStr == null || "".equals(subStr)) {
+            return str;
+        }
+        int index = str.lastIndexOf(subStr);
+        if (index == -1) {
+            return str;
+        }
+        return str.substring(index + subStr.length());
+    }
+
+    /**
+     * 包装字符串
+     * 
+     * @param str 原始字符串
+     * @param left 左边的字符串
+     * @param right 右边的字符串
+     * @return 拼接后的字符串
+     * @since 2.1
+     */
+    public static String wrap(String str, String left, String right) {
+        StringBuilder sb = new StringBuilder();
+        if (left != null) {
+            sb.append(left);
+        }
+        if (str != null) {
+            sb.append(str);
+        }
+        if (right != null) {
+            sb.append(right);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 去掉左右的字符串
+     * 
+     * @param str 原始字符串
+     * @param left 左边的子字符串
+     * @param right 右边的子字符串
+     * @return 切割后的字符串
+     * @since 2.1
+     */
+    public static String unWrap(String str, String left, String right) {
+        if (str == null || "".equals(str)) {
+            return str;
+        }
+        if (left != null && !"".equals(left)) {
+            if (str.startsWith(left)) {
+                str = str.substring(left.length());
+            }
+        }
+        if (right != null && !"".equals(right)) {
+            if (str.endsWith(right)) {
+                str = str.substring(0, str.length() - right.length());
+            }
+        }
+        return str;
+    }
+
+    /**
+     * 求最大值
+     * 
+     * @param num1 第一个数字
+     * @param num2 第二个数字
+     * @param num3 第三个数字
+     * @return 最大的数字
+     * @since 2.1
+     */
+    public static double max(double num1, double num2, double num3) {
+        double max = num1;
+        if (num2 > max) {
+            max = num2;
+        }
+        if (num3 > max) {
+            return num3;
+        }
+        return max;
+    }
+
+    /**
+     * 求最小值
+     * 
+     * @param num1 第一个数字
+     * @param num2 第二个数字
+     * @param num3 第三个数字
+     * @return 最小的数字
+     * @since 2.1
+     */
+    public static int min(int num1, int num2, int num3) {
+        int min = num1;
+        if (num2 < min) {
+            min = num2;
+        }
+        if (num3 < min) {
+            return num3;
+        }
+        return min;
+    }
+
+    /**
+     * 求最大值
+     * 
+     * @param num1 第一个数字
+     * @param num2 第二个数字
+     * @param num3 第三个数字
+     * @return 最大的数字
+     * @since 2.1
+     */
+    public static int max(int num1, int num2, int num3) {
+        int max = num1;
+        if (num2 > max) {
+            max = num2;
+        }
+        if (num3 > max) {
+            return num3;
+        }
+        return max;
+    }
+
+    /**
+     * 求最小值
+     * 
+     * @param num1 第一个数字
+     * @param num2 第二个数字
+     * @param num3 第三个数字
+     * @return 最小的数字
+     * @since 2.1
+     */
+    public static double min(double num1, double num2, double num3) {
+        double min = num1;
+        if (num2 < min) {
+            min = num2;
+        }
+        if (num3 < min) {
+            return num3;
+        }
+        return min;
+    }
+
+    /**
+     * 去除字符串结尾的斜线
+     * 
+     * @param str 原始字符串
+     * @return 结果字符串
+     * @since 2.1
+     */
+    public static String removeSlash(String str) {
+        if (str == null || "".equals(str.trim())) {
+            return str;
+        }
+        if (str.endsWith("/")) {
+            return str.substring(0, str.length() - 1);
+        } else {
+            return str;
+        }
+    }
+
+    /**
+     * 在字符串末尾添加斜线
+     * 
+     * @param str 原始字符串
+     * @return 结果字符串
+     * @since 2.1
+     */
+    public static String addSlash(String str) {
+        if (str == null || "".equals(str)) {
+            return "/";
+        }
+        if (str.endsWith("/")) {
+            return str;
+        } else {
+            return str + "/";
+        }
+    }
+
+    /**
+     * 截取字符串左边n个字符串
+     * 
+     * @param str 原始字符串
+     * @param size 截取的字符串个数
+     * @return 结果字符串
+     * @since 2.1
+     */
+    public static String left(String str, int size) {
+        if (str == null || "".equals(str)) {
+            return str;
+        }
+        if (size > 0) {
+            if (size > str.length()) {
+                return str;
+            } else {
+                return str.substring(0, size);
+            }
+        } else if (size == 0) {
+            return "";
+        } else {
+            size = -size;
+            if (size > str.length()) {
+                return str;
+            }
+            return str.substring(str.length() - size);
+        }
+    }
+
+    /**
+     * 截取字符串右边n个字符串
+     * 
+     * @param str 原始字符串
+     * @param size 截取的字符串个数
+     * @return 结果字符串
+     * @since 2.1
+     */
+    public static String right(String str, int size) {
+        if (str == null || "".equals(str)) {
+            return str;
+        }
+        if (size > 0) {
+            if (size > str.length()) {
+                return str;
+            }
+            return str.substring(str.length() - size);
+        } else if (size == 0) {
+            return "";
+        } else {
+            size = -size;
+            if (size > str.length()) {
+                return str;
+            }
+            return str.substring(0, size);
+        }
+    }
+
+    /**
+     * 对字符串进行循环移位
+     * 
+     * @param str 原始字符串
+     * @param offest 移动的位数
+     * @return 移位后的字符串
+     * @since 2.1
+     */
+    public static String move(String str, int offest) {
+        if (str == null || "".equals(str)) {
+            return str;
+        }
+        int length = str.length();
+        if (offest < 0) {
+            if (offest < -length) {
+                offest = offest % length;
+            }
+            offest = offest + length;
+        }
+        if (offest > length) {
+            offest = offest % length;
+        }
+        return str.substring(length - offest) + str.substring(0, length - offest);
+    }
+
+    /**
+     * 对字符串进行替换
+     * 
+     * @param bys 原始字节数组
+     * @param offset 移动量
+     * @return 替换后的字节数组
+     * @since 2.1
+     */
+    public static byte[] replacement(byte[] bys, int offset) {
+        if (bys == null) {
+            return null;
+        }
+        if (bys.length == 0) {
+            return bys;
+        }
+        int length = bys.length;
+        if (bys == null || length == 0) {
+            return bys;
+        }
+        byte[] result = new byte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = (byte) (bys[i] + (byte) offset);
+        }
+        return result;
+    }
+
+    /**
+     * 向map添加数据,重复时保留原来的
+     * 
+     * @param map 原始Map
+     * @param key 键
+     * @param value 值
+     * @return 返回的新Map
+     * @since 2.1
+     */
+    public static <K, V> Map<K, V> put(Map<K, V> map, K key, V value) {
+        V valueOld = map.get(key);
+        if (valueOld == null) {
+            map.put(key, value);
+        }
+        return map;
+    }
+
+    /**
+     * List&lt;Object&gt;转为List&lt;String&gt;
+     * 
+     * @param list 原始List
+     * @return 转换后的List
+     * @since 2.1
+     */
+    public static List<String> listString(List<Object> list) {
+        if (list == null) {
+            return null;
+        }
+        List<String> result = new ArrayList<String>();
+        for (int i = 0; i < list.size(); i++) {
+            Object object = list.get(i);
+            String current = null;
+            if (object != null) {
+                current = object + "";
+            }
+            result.add(current);
+        }
+        return result;
+    }
+
+    /**
+     * 将List 转为 List&lt;String&gt;
+     * 
+     * @param list 原始List
+     * @return 转换后的List
+     * @since 2.1
+     */
+    public static List<String> list(List list) {
+        if (list == null) {
+            return null;
+        }
+        List<String> result = new ArrayList<String>();
+        for (int i = 0; i < list.size(); i++) {
+            Object object = list.get(i);
+            String current = null;
+            if (object != null) {
+                current = object + "";
+            }
+            result.add(current);
+        }
+        return result;
+    }
+
+    /**
+     * map值类型转为字符串
+     * 
+     * @param map 原始Map
+     * @return 转换后的Map
+     * @since 2.1
+     */
+    public static Map<String, String> mapString(Map<String, Object> map) {
+        if (map == null) {
+            return null;
+        }
+        Map<String, String> result = new HashMap<String, String>();
+        if (map.isEmpty()) {
+            return result;
+        }
+        Set<Entry<String, Object>> entrySet = map.entrySet();
+        Iterator<Entry<String, Object>> iterator = entrySet.iterator();
+        while (iterator.hasNext()) {
+            Entry<String, Object> next = iterator.next();
+            String key = next.getKey();
+            Object value = next.getValue();
+            if (value == null) {
+                result.put(key, null);
+            } else {
+                result.put(key, value + "");
+            }
+        }
+        return result;
+    }
+
+    /**
+     * map值类型转为字符串
+     * 
+     * @param map 原始Map
+     * @return 转换后的Map
+     * @since 2.1
+     */
+    public static Map<String, String> map(Map map) {
+        if (map == null) {
+            return null;
+        }
+        Map<String, String> result = new HashMap<String, String>();
+        if (map.isEmpty()) {
+            return result;
+        }
+        Set<Entry<String, Object>> entrySet = map.entrySet();
+        Iterator<Entry<String, Object>> iterator = entrySet.iterator();
+        while (iterator.hasNext()) {
+            Entry<String, Object> next = iterator.next();
+            String key = next.getKey();
+            Object value = next.getValue();
+            if (value == null) {
+                result.put(key, null);
+            } else {
+                result.put(key, value + "");
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 集合完全去重复(只要重复了就删除)
+     * 
+     * @param list 原始集合
+     * @return 去重复后的集合
+     * @since 2.1
+     */
+    public static <T> List<T> deduplication(List<T> list) {
+        if (list == null) {
+            return null;
+        }
+        if (list.size() <= 1) {
+            return list;
+        }
+        List<T> repeatList = new ArrayList<T>();
+        List<T> result = new ArrayList<T>();
+        for (int i = 0; i < list.size(); i++) {
+            T current = list.get(i);
+            int index = repeatList.indexOf(current);
+            if (index == -1) {
+                int indexResult = result.indexOf(current);
+                if (indexResult == -1) {
+                    result.add(current);
+                } else {
+                    result.remove(current);
+                    repeatList.add(current);
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 将字符串转化为数字
+     * 
+     * @param str 原始字符串
+     * @return 转换后的数字
+     * @since 2.1
+     */
+    public static Integer parseInt(String str) {
+        if (str == null || "".equals(str.trim())) {
+            return null;
+        }
+        str = str.trim();
+        boolean negative = str.startsWith("-");
+        if (negative) {
+            str = str.substring(1);
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= '0' && ch <= '9') {
+                sb.append(ch);
+            } else {
+                break;
+            }
+        }
+        if (sb.length() == 0) {
+            return null;
+        }
+        int num = Integer.parseInt(sb.toString());
+        if (negative) {
+            num = -num;
+        }
+        return num;
+    }
+
+    /**
+     * 多个map合并
+     * 
+     * @param list 存放map的集合
+     * @return 合并后的Map
+     * @since 2.1
+     */
+    public static <K, V> Map<K, V> join(List<Map<K, V>> list) {
+        if (list == null) {
+            return null;
+        }
+        Map<K, V> result = new HashMap<K, V>();
+        for (int i = 0; i < list.size(); i++) {
+            Map<K, V> map = list.get(i);
+            if (map != null) {
+                result.putAll(map);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 判断一个数字是否在开闭区间内
+     * 
+     * @param expression 开闭区间表达式
+     * @param num 需要判断的数字
+     * @return 判断结果
+     * @since 2.1
+     */
+    public static boolean contain(String expression, int num) {
+        if (expression == null || "".equals(expression.trim())) {
+            throw new RuntimeException("表达式不能为空");
+        }
+        if (!expression.startsWith("[") && !expression.startsWith("(")) {
+            throw new RuntimeException("表达式必须以[或(开头");
+        }
+        if (!expression.endsWith("]") && !expression.endsWith(")")) {
+            throw new RuntimeException("表达式必须以]或)结尾");
+        }
+        String exp = expression.substring(0, expression.length() - 1);
+        int index = exp.indexOf(",");
+        if (index == -1) {
+            throw new RuntimeException("表达式中间必须含有逗号");
+        }
+        String left = expression.substring(0, 1);
+        String right = expression.substring(expression.length() - 1);
+        String leftNumStr = exp.substring(1, index);
+        String rightNumStr = exp.substring(index + 1);
+        leftNumStr = leftNumStr.trim();
+        rightNumStr = rightNumStr.trim();
+        int leftNum = 0;
+        try {
+            leftNum = Integer.parseInt(leftNumStr);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("表达式" + expression + "含有非数字" + leftNumStr);
+        }
+        int rightNum = 0;
+        try {
+            rightNum = Integer.parseInt(rightNumStr);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("表达式" + expression + "含有非数字" + rightNumStr);
+        }
+        boolean flag = false;
+        if ("[".equals(left)) {
+            if (num >= leftNum) {
+                flag = true;
+            }
+        } else if ("(".equals(left)) {
+            if (num > leftNum) {
+                flag = true;
+            }
+        }
+        if (!flag) {
+            return false;
+        }
+        if ("]".equals(right)) {
+            if (num <= rightNum) {
+                flag = true;
+            }
+        } else if (")".equals(right)) {
+            if (num < rightNum) {
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
+    /**
+     * 创建文件夹
+     * 
+     * @param fileName 文件(夹)名称
+     * @return 是否进行了文件夹创建
+     * @since 2.1
+     */
+    public static boolean mkdir(String fileName) {
+        if (fileName == null || "".equals(fileName.trim())) {
+            throw new RuntimeException("文件名称不可为空");
+        }
+        fileName = fileName.replace("\\", "/");
+        File file = new File(fileName);
+        if (file.exists()) {
+            return false;
+        }
+        if (fileName.endsWith("/")) {
+            return file.mkdirs();
+        }
+        int index = fileName.lastIndexOf("/");
+        if (index == -1) {
+            return file.mkdirs();
+        }
+        String simpleName = fileName.substring(index + 1);
+        int indexPoint = simpleName.lastIndexOf(".");
+        if (indexPoint == -1) {
+            return file.mkdirs();
+        }
+        String folder = fileName.substring(0, index);
+        file = new File(folder);
+        if (file.exists()) {
+            return false;
+        }
+        return file.mkdirs();
+    }
+
+    /**
+     * 修改字符串的值
+     * 
+     * @param str 原始字符串
+     * @param value 新值
+     * @since 2.1
+     */
+    public static void change(String str, String value) {
+        try {
+            Field fieldValue = String.class.getDeclaredField("value");
+            fieldValue.setAccessible(true);
+            fieldValue.set(str, value.toCharArray());
+            fieldValue.setAccessible(false);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 月份的名称
+     * 
+     * @param month 月份序号,从0开始
+     * @return 月份名称
+     * @since 2.1
+     */
+    public static String monthName(int month) {
+        switch (month) {
+        case 0:
+            return "一月";
+        case 1:
+            return "二月";
+        case 2:
+            return "三月";
+        case 3:
+            return "四月";
+        case 4:
+            return "五月";
+        case 5:
+            return "六月";
+        case 6:
+            return "七月";
+        case 7:
+            return "八月";
+        case 8:
+            return "九月";
+        case 9:
+            return "十月";
+        case 10:
+            return "十一月";
+        case 11:
+            return "十二月";
+        default:
+            throw new RuntimeException("月份的数值必须在0-11之间");
+        }
+    }
+
+    /**
+     * 为逗号分隔的每个字符串增加单引号
+     * 
+     * @param str 原始字符串
+     * @return 拼接后的新字符串
+     * @since 2.1
+     */
+    public static String wrapChar(String str) {
+        if (str == null) {
+            return null;
+        }
+        if ("".equals(str)) {
+            return "''";
+        }
+        String[] array = str.split(",");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            sb.append("'");
+            String current = array[i];
+            if (current != null) {
+                sb.append(current.trim());
+            }
+            sb.append("'");
+            if (i != array.length - 1) {
+                sb.append(",");
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 替换字符串中的模板,找不到不替换
+     * 
+     * @param str 原始字符串
+     * @param map 替换的字符串键值表
+     * @return 替换后的字符串
+     * @since 2.1
+     */
+    public static String template(String str, Map<String, String> map) {
+        if (str == null || "".equals(str.trim())) {
+            return str;
+        }
+        char[] chs = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        StringBuilder keyBuilder = new StringBuilder();
+        boolean inner = false;
+        int length = str.length();
+        int trunk = length - 3;// ${}的长度
+        for (int i = 0; i < chs.length; i++) {
+            char ch = chs[i];
+            if (inner) {
+                if (ch != '}') {
+                    keyBuilder.append(ch);
+                    continue;
+                } else {
+                    String key = keyBuilder.toString();
+                    String value = map.get(key);
+                    if (value != null) {
+                        sb.append(value);
+                    } else {
+                        sb.append("${");
+                        sb.append(key);
+                        sb.append("}");
+                    }
+                    inner = false;
+                    keyBuilder = new StringBuilder();
+                }
+            } else {
+                if (i < trunk) {
+                    if (ch == '$' && chs[i + 1] == '{') {
+                        inner = true;
+                        i++;
+                    } else {
+                        sb.append(ch);
+                    }
+                } else {
+                    sb.append(ch);
+                }
+            }
+        }
+        return sb.toString();
     }
 }

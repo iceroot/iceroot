@@ -24,12 +24,17 @@ public class IceConst {
     public static final String ALPHABET_LOWER = "abcdefghijklmnopqrstuvwxyz";// 小写字母
     public static final String ALPHABET_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";// 大写字母
     public static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";// mysql
-                                                                        // jdbc驱动类名
+                                                                      // jdbc驱动类名
     public static final String MYSQL_DRIVER_OLD = "org.gjt.mm.mysql.Driver";// mysql
                                                                             // jdbc驱动类名(旧版本)
     public static final String ORACLE_DRIVER = "oracle.jdbc.driver.OracleDriver";// oracle
-                                                                                    // jdbc驱动类名
+                                                                                 // jdbc驱动类名
     public static final String UTF_8 = "UTF-8";// 字符集 UTF-8
     public static final String GBK = "GBK";// 字符集 GBK
     public static final String ISO_8859_1 = "ISO_8859-1";// 字符集 ISO_8859-1
+
+    public static final String NUMS = "0123456789";// 数字
+    public static final String CHARS = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";// 特殊字符
+    public static final String SEPARATOR = "`<${separator}>`";// 特殊分隔符
+
 }

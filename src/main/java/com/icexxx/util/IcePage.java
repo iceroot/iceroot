@@ -1,5 +1,6 @@
 package com.icexxx.util;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -80,6 +81,13 @@ public class IcePage<T> {
 
     public void setRainbow(int[] rainbow) {
         this.rainbow = rainbow;
+    }
+
+    @Override
+    public String toString() {
+        return "IcePage [first=" + first + ", last=" + last + ", prev=" + prev + ", next=" + next + ", pageSize="
+                + pageSize + ", itemCount=" + itemCount + ", rainbow=" + Arrays.toString(rainbow) + ", list=" + list
+                + "]";
     }
 
 }

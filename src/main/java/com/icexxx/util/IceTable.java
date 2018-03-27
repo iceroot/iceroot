@@ -2,6 +2,12 @@ package com.icexxx.util;
 
 import java.util.List;
 
+/**
+ * 数据库表对象
+ * 
+ * @author IceWater
+ * @version 2.1
+ */
 public class IceTable {
     private String tableName;
     private List<IceColumn> columnList;

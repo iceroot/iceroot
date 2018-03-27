@@ -1,10 +1,12 @@
 package com.icexxx.util;
 
+import java.util.List;
+
 public class IceTree {
     private String id;
     private String name;
     private Object obj;
-    private IceTree tree;
+    private List<IceTree> tree;
 
     public IceTree() {
     }
@@ -20,13 +22,13 @@ public class IceTree {
         this.obj = obj;
     }
 
-    public IceTree(String id, String name, IceTree tree) {
+    public IceTree(String id, String name, List<IceTree> tree) {
         this.id = id;
         this.name = name;
         this.tree = tree;
     }
 
-    public IceTree(String id, String name, Object obj, IceTree tree) {
+    public IceTree(String id, String name, Object obj, List<IceTree> tree) {
         this.id = id;
         this.name = name;
         this.obj = obj;
@@ -57,11 +59,11 @@ public class IceTree {
         this.obj = obj;
     }
 
-    public IceTree getTree() {
+    public List<IceTree> getTree() {
         return tree;
     }
 
-    public void setTree(IceTree tree) {
+    public void setTree(List<IceTree> tree) {
         this.tree = tree;
     }
 
@@ -112,4 +114,5 @@ public class IceTree {
     public String toString() {
         return "IceTree [id=" + id + ", name=" + name + ", obj=" + obj + ", tree=" + tree + "]";
     }
+
 }

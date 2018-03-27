@@ -472,4 +472,67 @@ public class IceDbUtil {
             }
         }
     }
+
+    /**
+     * 创建数据库
+     * 
+     * @param databaseName 数据库名称
+     * @param username 用户名
+     * @param password 密码
+     * @param url url
+     * @param driver 数据库驱动类名
+     * @return 是否创建成功
+     * @since 2.1
+     */
+    public static boolean createDatabase(String databaseName, String username, String password, String url,
+            String driver) {
+        if (databaseName == null || "".equals(databaseName)) {
+            return false;
+        }
+        databaseName = databaseName.replaceAll("\\s+", "");
+        databaseName = databaseName.replace("\"", "");
+        databaseName = databaseName.replace("'", "");
+        String sql = "CREATE DATABASE ${databaseName} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
+        sql = sql.replace("${databaseName}", databaseName);
+        if (!url.startsWith("jdbc:mysql://")) {
+            url = "jdbc:mysql://" + url;
+        }
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+            statement = connection.createStatement();
+            boolean execute = statement.execute(sql);
+            return execute;
+        } catch (SQLException e) {
+            String message = e.getMessage();
+            if (message.startsWith("Can't create database ") && message.endsWith("database exists")) {
+                return true;
+            } else {
+                e.printStackTrace();
+                return false;
+            }
+        } finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 }
