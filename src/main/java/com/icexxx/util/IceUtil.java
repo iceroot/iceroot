@@ -3217,4 +3217,25 @@ public class IceUtil {
         }
         return sb.toString();
     }
+
+    /**
+     * 字符串取相反值
+     * 
+     * @param value 原始值
+     * @param trueValue 枚举值1
+     * @param falseValue 枚举值2
+     * @return
+     */
+    public static String not(String value, String trueValue, String falseValue) {
+        if (value == null || "".equals(value)) {
+            return value;
+        }
+        if (value.equals(trueValue)) {
+            return falseValue;
+        }
+        if (value.equals(falseValue)) {
+            return trueValue;
+        }
+        return value;
+    }
 }
