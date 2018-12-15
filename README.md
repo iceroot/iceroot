@@ -10,6 +10,13 @@ iceroot是一个java基础工具类.封装了很多有用的方法.
 基础工具类对于java代码的编写是非常必要的,然而很多常见的操作在很多第三方类库中并未提供,我们必须一遍又一遍的重新编写.
 此 api补充了第三方基础工具类缺失的常见方法.
 
+maven地址:<br/>
+&lt;dependency&gt;<br/>
+&nbsp;&nbsp;&lt;groupId&gt;com.icexxx&lt;/groupId&gt;<br/>
+&nbsp;&nbsp;&lt;artifactId&gt;iceroot&lt;/artifactId&gt;<br/>
+&nbsp;&nbsp;&lt;version&gt;2.0.1&lt;/version&gt;<br/>
+&lt;/dependency&gt;<br/>
+
 Iceroot
 
 Iceroot is a java base tool class. Encapsulates a lot of useful methods.

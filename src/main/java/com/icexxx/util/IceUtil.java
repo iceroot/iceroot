@@ -3224,7 +3224,8 @@ public class IceUtil {
      * @param value 原始值
      * @param trueValue 枚举值1
      * @param falseValue 枚举值2
-     * @return
+     * @return 获取的相反值
+     * @since 2.0.2
      */
     public static String not(String value, String trueValue, String falseValue) {
         if (value == null || "".equals(value)) {
@@ -3237,5 +3238,176 @@ public class IceUtil {
             return trueValue;
         }
         return value;
+    }
+
+    /**
+     * 负数转为零
+     * 
+     * @param num 原始数字
+     * @return 转换后的结果
+     * @since 2.0.2
+     */
+    public static BigDecimal negative2Zero(BigDecimal num) {
+        if (num == null) {
+            return null;
+        }
+        if (num.compareTo(new BigDecimal("0")) == -1) {
+            return new BigDecimal("0");
+        } else {
+            return num;
+        }
+    }
+
+    /**
+     * 逗号分隔字符串转List
+     * 
+     * @param str 逗号分隔的字符串
+     * @return 转换后的数组
+     * @since 2.0.2
+     */
+    public static List<Integer> commaStr2List(String str) {
+        List<Integer> list = new ArrayList<Integer>();
+        if (str == null || "".equals(str)) {
+            return list;
+        }
+        str = str.trim();
+        String[] strArray = str.split(",");
+        for (int i = 0; i < strArray.length; i++) {
+            String numberStr = strArray[i];
+            if (numberStr == null || "".equals(numberStr.trim())) {
+                continue;
+            }
+            Integer num = null;
+            try {
+                num = Integer.parseInt(numberStr.trim());
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+            if (num != null) {
+                list.add(num);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * 如果集合为空,添加-1
+     * 
+     * @param list 原始集合
+     * @return 处理后的集合
+     * @since 2.0.2
+     */
+    public static List<Integer> addDefault(List<Integer> list) {
+        List<Integer> result = new ArrayList<Integer>();
+        if (list == null || list.size() == 0) {
+            result.add(-1);
+            return result;
+        } else {
+            return list;
+        }
+    }
+
+    /**
+     * 返回真值
+     * 
+     * @return 返回的值
+     * @since 2.0.2
+     */
+    public static boolean trueFunction() {
+        return true;
+    }
+
+    /**
+     * 返回假值
+     * 
+     * @return 返回的值
+     * @since 2.0.2
+     */
+    public static boolean falseFunction() {
+        return false;
+    }
+
+    /**
+     * 返回首字母拼接后的字符串
+     * 
+     * @param str 原始字符串
+     * @return 首字母拼接后的字符串
+     * @since 2.0.2
+     */
+    public static String firstLetter(String str) {
+        if (str == null) {
+            return null;
+        }
+        str = str.trim();
+        String[] strArray = str.split("_");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < strArray.length; i++) {
+            String word = strArray[i];
+            if (word != null && !"".equals(word)) {
+                sb.append(word.charAt(0));
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 根据键和值创建Map
+     * 
+     * @param key 键
+     * @param value 值
+     * @return 创建后的Map
+     * @since 2.0.2
+     */
+    public static Map<String, String> createMap(String key, String value) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(key, value);
+        return map;
+    }
+
+    /**
+     * 根据键和值创建Map
+     * 
+     * @param key1 第一个键
+     * @param value1 第一个值
+     * @param key2 第二个键
+     * @param value2 第二个值
+     * @return 创建后的Map
+     * @since 2.0.2
+     */
+    public static Map<String, String> createMap(String key1, String value1, String key2, String value2) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(key1, value1);
+        map.put(key2, value2);
+        return map;
+    }
+
+    /**
+     * 判断是否为null或空字符串
+     * 
+     * @param val 需要判断的值
+     * @return 是否为null或空字符串
+     * @since 2.0.2
+     */
+    public static boolean isEmptyStr(Object val) {
+        if (val == null || "".equals(val)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 对象转为字符串,null转为空字符串
+     * 
+     * @param val 原始值
+     * @return 转化后的数值
+     * @since 2.0.2
+     */
+    public static String toString(Object val) {
+        if (val == null || "".equals(val)) {
+            return "";
+        } else {
+            return val + "";
+        }
     }
 }
