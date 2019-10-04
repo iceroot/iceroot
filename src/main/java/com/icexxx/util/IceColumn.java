@@ -13,7 +13,7 @@ public class IceColumn {
     private int columnType;
     private int columnDisplaySize;
     private int columnCount;
-    private int Scale;
+    private int scale;
     private String columnClassName;
     private String tableName;
     private String schemaName;
@@ -71,11 +71,11 @@ public class IceColumn {
     }
 
     public int getScale() {
-        return Scale;
+        return scale;
     }
 
     public void setScale(int scale) {
-        Scale = scale;
+    	this.scale = scale;
     }
 
     public String getColumnClassName() {
@@ -138,7 +138,7 @@ public class IceColumn {
     public String toString() {
         return "IceColumn [columnName=" + columnName + ", columnLabel=" + columnLabel + ", columnTypeName="
                 + columnTypeName + ", columnType=" + columnType + ", columnDisplaySize=" + columnDisplaySize
-                + ", columnCount=" + columnCount + ", Scale=" + Scale + ", columnClassName=" + columnClassName
+                + ", columnCount=" + columnCount + ", scale=" + scale + ", columnClassName=" + columnClassName
                 + ", tableName=" + tableName + ", schemaName=" + schemaName + ", catalogName=" + catalogName
                 + ", precision=" + precision + ", remark=" + remark + ", nullable=" + nullable + "]";
     }
