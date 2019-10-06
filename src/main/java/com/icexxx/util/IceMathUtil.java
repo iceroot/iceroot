@@ -88,4 +88,22 @@ public class IceMathUtil {
     public static String negate(String num) {
         return new BigDecimal(num).negate().toString();
     }
+
+    /**
+     * 计算阶乘
+     * 
+     * @param num 需要计算阶乘的数字
+     * @return 计算结果
+     * @version 2.0.3
+     */
+    public static BigDecimal factorial(int num) {
+        BigDecimal product = new BigDecimal("1");
+        if (num == 0 || num == 1) {
+            return product;
+        }
+        for (int i = 0; i < num; i++) {
+            product = product.multiply(new BigDecimal(i + 1 + ""));
+        }
+        return product;
+    }
 }

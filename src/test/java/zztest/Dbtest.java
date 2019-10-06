@@ -11,7 +11,7 @@ import com.icexxx.util.IceConst;
 import com.icexxx.util.IceDbUtil;
 
 public class Dbtest {
-    //@Test
+    // @Test
     public void sql() {
         String url = "jdbc:mysql://120.77.168.244:3306/ice?useUnicode=true&characterEncoding=utf-8";
         String username = "root";

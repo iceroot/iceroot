@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.icexxx.util.IceUtil;
 
 public class EnumTest {
-    //@Test
+    // @Test
     public void convert2Int() {
         print(IceUtil.equalsEnum(Type.CLICK, "CLICK"));
         print(IceUtil.equalsEnum(Type.CLICK, "Click"));

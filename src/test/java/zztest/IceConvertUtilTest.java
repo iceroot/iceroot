@@ -24,7 +24,7 @@ public class IceConvertUtilTest {
         print(list2.get(0) + 45);
     }
 
-    //@Test
+    // @Test
     public void toObjectArray() {
         List<Integer> list = null;
         print(IceConvertUtil.toObjectArray(list) + "");

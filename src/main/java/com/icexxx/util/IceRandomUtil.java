@@ -1,7 +1,6 @@
 package com.icexxx.util;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -92,7 +91,29 @@ public class IceRandomUtil {
         Calendar cal = Calendar.getInstance();
         int value = ran.nextInt(end - start) + start;
         cal.set(Calendar.DAY_OF_MONTH, value);
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        DateFormat dateFormat = IceConst.DATE_FORMAT;
+        Date date = cal.getTime();
+        return dateFormat.format(date);
+    }
+
+    /**
+     * 随机生成日期
+     * 
+     * @param start 日期向前偏移量
+     * @param end 日期向后偏移量
+     * @return 生成的日期
+     * @version 2.0.3
+     */
+    public static String randomDateTime(int start, int end) {
+        Random ran = new Random();
+        Calendar cal = Calendar.getInstance();
+        int value = end - start;
+        int day = cal.get(Calendar.DAY_OF_YEAR);
+        cal.set(Calendar.DAY_OF_YEAR, day + ran.nextInt(value) + start);
+        DateFormat dateFormat = IceConst.TIME_FORMAT;
+        cal.set(Calendar.HOUR_OF_DAY, ran.nextInt(24));
+        cal.set(Calendar.MINUTE, ran.nextInt(60));
+        cal.set(Calendar.SECOND, ran.nextInt(60));
         Date date = cal.getTime();
         return dateFormat.format(date);
     }

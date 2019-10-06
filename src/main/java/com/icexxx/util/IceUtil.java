@@ -3410,4 +3410,597 @@ public class IceUtil {
             return val + "";
         }
     }
+
+    /**
+     * 比较List长度是否相等
+     * 
+     * @param list1 第一个集合
+     * @param list2 第二个集合
+     * @return 比较的结果
+     * @version 2.0.3
+     */
+    public static <T> boolean equalsSize(List<T> list1, List<T> list2) {
+        if (list1 == null || list1.size() == 0) {
+            if (list2 == null || list2.size() == 0) {
+                return true;
+            }
+        } else if (list2 != null && list1.size() == list2.size()) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 将数字转为字符,0转为A
+     * 
+     * @param num 原始数字
+     * @return 转换后的字符
+     * @version 2.0.3
+     */
+    public static String convertChar(int num) {
+        final int characterLength = 26;
+        if (num < 0) {
+            throw new RuntimeException("num必须大于0");
+        }
+        if (num > 701) {
+            throw new RuntimeException("num必须小于等于701");
+        }
+        if (num < characterLength) {
+            return (char) (num + 'A') + "";
+        }
+        StringBuilder sb = new StringBuilder();
+        int sum = num - characterLength;
+        int cur = sum / characterLength;
+        sb.append((char) (cur + 'A') + "");
+        cur = sum - cur * characterLength;
+        sb.append((char) (cur % characterLength + 'A') + "");
+        return sb.toString();
+    }
+
+    /**
+     * 将时间转为自然描述语
+     * 
+     * @param second 原始秒数
+     * @return 转换后的结果
+     * @version 2.0.3
+     */
+    public static String convertDesc(long second) {
+        StringBuilder sb = new StringBuilder();
+        boolean symbol = second >= 0L;
+        boolean outstrip = false;
+        if (!symbol) {
+            second = -second;
+        }
+        if (second >= 86400) {
+            outstrip = true;
+            int day = (int) (second / 86400L);
+            sb.append(day);
+            sb.append("天");
+            second = second % 86400L;
+        }
+        if (second >= 3600) {
+            outstrip = true;
+            int hour = (int) (second / 3600L);
+            sb.append(hour);
+            sb.append("时");
+            second = second % 3600L;
+        }
+        if (second >= 60) {
+            outstrip = true;
+            int minute = (int) (second / 60L);
+            sb.append(minute);
+            sb.append("分");
+            second = second % 60L;
+        }
+        second = (int) (second % 60L);
+        if (second != 0 || !outstrip) {
+            sb.append(second);
+            sb.append("秒");
+            if (!symbol) {
+                sb.insert(0, "-");
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 判断是否是日期
+     * 
+     * @param str 日期字符串
+     * @return 判断结果
+     * @version 2.0.3
+     */
+    public static boolean isDate(String str) {
+        SimpleDateFormat sdf = IceConst.DATE_FORMAT;
+        try {
+            sdf.parse(str);
+            return true;
+        } catch (ParseException e) {
+            sdf = IceConst.TIME_FORMAT;
+            try {
+                sdf.parse(str);
+                return true;
+            } catch (ParseException e1) {
+                return false;
+            }
+        }
+    }
+
+    /**
+     * 数字转为带圆圈的数字
+     * 
+     * @param num 原始数字
+     * @return 转换后的字符
+     * @version 2.0.3
+     */
+    public static String circleNum(int num) {
+        if (num <= 0 || num > 20) {
+            throw new RuntimeException("数字必须在[1--20]之间");
+        }
+        String table = "①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳";
+        return table.substring(num - 1, num);
+    }
+
+    /**
+     * 判断两个浮点数是否相等
+     * 
+     * @param double1 第一个浮点数
+     * @param double2 第二个浮点数
+     * @return 比较结果
+     * @version 2.0.3
+     */
+    public static boolean equalsDouble(double double1, double double2) {
+        if ((double1 + "").equals((double2 + ""))) {
+            return true;
+        }
+        if (double1 > double2) {
+            if (double1 - double2 < 0.00000000001) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (double1 < double2) {
+            if (double2 - double1 < 0.00000000001) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 方向名称转换
+     * 
+     * @param str 方向名称代号
+     * @return 转换后的方向名称
+     * @version 2.0.3
+     */
+    public static String bearing(String str) {
+        if ("east".equalsIgnoreCase(str)) {
+            return "东";
+        } else if ("west".equalsIgnoreCase(str)) {
+            return "西";
+        } else if ("south".equalsIgnoreCase(str)) {
+            return "南";
+        } else if ("north".equalsIgnoreCase(str)) {
+            return "北";
+        } else if ("center".equalsIgnoreCase(str)) {
+            return "中";
+        } else if ("middle".equalsIgnoreCase(str)) {
+            return "中";
+        } else {
+            return str;
+        }
+    }
+
+    /**
+     * 数字填充0
+     * 
+     * @param num 原始数字
+     * @param length 填充后的数字长度
+     * @return 填充后的字符串
+     * @version 2.0.3
+     */
+    public static String fillZero(int num, int length) {
+        boolean symbol = num < 0;
+        if (symbol) {
+            num = -num;
+        }
+        StringBuilder sb = new StringBuilder();
+        if (symbol) {
+            sb.append("-");
+        }
+        String numStr = num + "";
+        int surplus = length - numStr.length();
+        if (surplus > 0) {
+            for (int i = 0; i < surplus; i++) {
+                sb.append("0");
+            }
+        }
+        sb.append(numStr);
+        return sb.toString();
+    }
+
+    /**
+     * 每隔指定距离添加字符
+     * 
+     * @param str 原始字符串
+     * @param length 添加字符串的间距
+     * @param splitStr 填充的字符串分隔符
+     * @return 转换后的字符串
+     * @version 2.0.3
+     */
+    public static String addByLength(String str, int length, String splitStr) {
+        if (str == null) {
+            return null;
+        }
+        if ("".equals(str)) {
+            return "";
+        }
+        if (length <= 0) {
+            return str;
+        }
+        StringBuilder sb = new StringBuilder();
+        boolean flag = str.length() % length == 0;
+        int copies = str.length() / length;
+        if (!flag) {
+            copies++;
+        }
+        for (int i = 0; i < copies; i++) {
+            if (i < copies - 1) {
+                sb.append(str.substring(i * length, (i + 1) * length));
+                sb.append(splitStr);
+            } else {
+                if (flag) {
+                    sb.append(str.substring(i * length, (i + 1) * length));
+                } else {
+                    sb.append(str.substring(i * length));
+                }
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 获取一定范围内的数字
+     * 
+     * @param start 开始的数字值
+     * @param end 结束的数字值
+     * @return 获取的数字集合
+     * @version 2.0.3
+     */
+    public static List<Integer> range(int start, int end) {
+        if (start > end) {
+            int temp = start;
+            start = end;
+            end = temp;
+        }
+        List<Integer> list = new ArrayList<Integer>();
+        for (int i = start; i < end; i++) {
+            list.add(i);
+        }
+        return list;
+    }
+
+    /**
+     * 获取集合的长度
+     * 
+     * @param list 原始集合
+     * @return 集合的长度
+     * @version 2.0.3
+     */
+    public static <T> int length(List<T> list) {
+        if (list == null) {
+            return 0;
+        } else {
+            return list.size();
+        }
+    }
+
+    /**
+     * 数据库类型名称转为java类型名称
+     * 
+     * @param jdbcType 数据库类型名称
+     * @return 转换后的java类型名称
+     * @version 2.0.3
+     */
+    public static String jdbc2javaType(String jdbcType) {
+        if ("number".equals(jdbcType)) {
+            return "int";
+        } else if ("varchar".equals(jdbcType)) {
+            return "String";
+        } else if ("double".equals(jdbcType)) {
+            return "double";
+        } else if ("int".equals(jdbcType)) {
+            return "int";
+        } else if ("varchar2".equals(jdbcType)) {
+            return "String";
+        } else if ("bigint".equals(jdbcType)) {
+            return "long";
+        } else if ("decimal".equals(jdbcType)) {
+            return "BigDecimal";
+        } else if ("text".equals(jdbcType)) {
+            return "String";
+        } else if ("datetime".equals(jdbcType)) {
+            return "Date";
+        } else if ("timestamp".equals(jdbcType)) {
+            return "Date";
+        } else if ("date".equals(jdbcType)) {
+            return "Date";
+        } else if ("tinyint".equals(jdbcType)) {
+            return "boolean";
+        } else if ("smallint".equals(jdbcType)) {
+            return "short";
+        } else if ("integer".equals(jdbcType)) {
+            return "int";
+        } else if ("single".equals(jdbcType)) {
+            return "float";
+        } else if ("long".equals(jdbcType)) {
+            return "long";
+        } else if ("varchar2".equals(jdbcType)) {
+            return "String";
+        } else if ("char".equals(jdbcType)) {
+            return "char";
+        } else if ("currency".equals(jdbcType)) {
+            return "BigDecimal";
+        } else if ("byte".equals(jdbcType)) {
+            return "byte";
+        } else if ("nvarchar".equals(jdbcType)) {
+            return "String";
+        } else if ("nvarchar2".equals(jdbcType)) {
+            return "String";
+        } else if ("bit".equals(jdbcType)) {
+            return "boolean";
+        } else if ("blob".equals(jdbcType)) {
+            return "byte[]";
+        } else if ("clob".equals(jdbcType)) {
+            return "byte[]";
+        } else if ("varbinary".equals(jdbcType)) {
+            return "byte[]";
+        } else if ("binary".equals(jdbcType)) {
+            return "byte[]";
+        } else if ("numeric".equals(jdbcType)) {
+            return "int";
+        } else if ("float".equals(jdbcType)) {
+            return "float";
+        } else {
+            throw new RuntimeException("暂不支持的类型:" + jdbcType);
+        }
+    }
+
+    /**
+     * 判断是否为图片
+     * 
+     * @param suffix 图片的后缀
+     * @return 判断结果
+     * @version 2.0.3
+     */
+    public static boolean isPic(String suffix) {
+        if (suffix == null || "".equals(suffix)) {
+            return false;
+        }
+        if (suffix.startsWith(".")) {
+            suffix = suffix.substring(1);
+        }
+        if ("png".equalsIgnoreCase(suffix)) {
+            return true;
+        }
+        if ("jpg".equalsIgnoreCase(suffix)) {
+            return true;
+        }
+        if ("jpeg".equalsIgnoreCase(suffix)) {
+            return true;
+        }
+        if ("bmp".equalsIgnoreCase(suffix)) {
+            return true;
+        }
+        if ("gif".equalsIgnoreCase(suffix)) {
+            return true;
+        }
+        if ("tif".equalsIgnoreCase(suffix)) {
+            return true;
+        }
+        if ("svg".equalsIgnoreCase(suffix)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 计算集合元素的和
+     * 
+     * @param list 原始集合
+     * @return 计算结果
+     * @version 2.0.3
+     */
+    public static Long sum(List<Long> list) {
+        if (list == null || list.isEmpty()) {
+            return 0L;
+        }
+        Long sum = 0L;
+        for (Long cur : list) {
+            if (cur != null) {
+                sum += cur;
+            }
+        }
+        return sum;
+    }
+
+    /**
+     * 计算集合元素的和
+     * 
+     * @param list 原始集合
+     * @return 计算结果
+     * @version 2.0.3
+     */
+    public static Long sumInteger(List<Integer> list) {
+        if (list == null || list.isEmpty()) {
+            return 0L;
+        }
+        Long sum = 0L;
+        for (Integer cur : list) {
+            if (cur != null) {
+                sum += cur;
+            }
+        }
+        return sum;
+    }
+
+    /**
+     * 从后数查找集合中的元素
+     * 
+     * @param list 原始集合
+     * @param ele 需要查找的元素
+     * @return 查找的结果
+     * @version 2.0.3
+     */
+    public static <T> int lastIndexOf(List<T> list, T ele) {
+        if (list == null || list.isEmpty()) {
+            return -1;
+        }
+        for (int i = list.size() - 1; i >= 0; i--) {
+            T obj = list.get(i);
+            if (obj != null && obj.equals(ele)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 从后数查找集合中的元素
+     * 
+     * @param list 原始集合
+     * @param ele 需要查找的元素
+     * @param from 开始查找的位置
+     * @return 查找结果
+     * @version 2.0.3
+     */
+    public static <T> int lastIndexOf(List<T> list, T ele, int from) {
+        if (list == null || list.isEmpty()) {
+            return -1;
+        }
+        if (from >= list.size()) {
+            return -1;
+        }
+        for (int i = from; i >= 0; i--) {
+            T obj = list.get(i);
+            if (obj != null && obj.equals(ele)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 为集合添加-1
+     * 
+     * @param list 原始集合
+     * @return 添加元素后的集合
+     * @version 2.0.3
+     */
+    public static List<Long> addNegativeOne(List<Long> list) {
+        List<Long> result = new ArrayList<Long>();
+        if (list == null || list.isEmpty()) {
+            result.add(-1L);
+            return result;
+        }
+        return list;
+    }
+
+    /**
+     * 为集合添加-1
+     * 
+     * @param list 原始集合
+     * @return 添加元素后的集合
+     * @version 2.0.3
+     */
+    public static List<Integer> addNegativeOneInteger(List<Integer> list) {
+        List<Integer> result = new ArrayList<Integer>();
+        if (list == null || list.isEmpty()) {
+            result.add(-1);
+            return result;
+        }
+        return list;
+    }
+
+    /**
+     * 判断集合是否只有一个元素
+     * 
+     * @param list 原始集合
+     * @return 判断结果
+     * @version 2.0.3
+     */
+    public static <T> boolean isOnlyOne(List<T> list) {
+        if (list == null || list.isEmpty()) {
+            return false;
+        }
+        return list.size() == 1;
+    }
+
+    /**
+     * 获取Map的所有key
+     * 
+     * @param map 原始Map
+     * @return 获取的所有键
+     * @version 2.0.3
+     */
+    public static <K, V> List<K> keys(Map<K, V> map) {
+        if (map == null || map.isEmpty()) {
+            return new ArrayList<K>();
+        }
+        return new ArrayList<K>(map.keySet());
+    }
+
+    /**
+     * 生成连续的日期字符串
+     * 
+     * @param startDate 开始日期字符串
+     * @param endDate 结束日期字符串
+     * @return 生成的连续的日期字符串
+     * @version 2.0.3
+     */
+    public static List<String> continuityDate(String startDate, String endDate) {
+        List<String> result = new ArrayList<String>();
+        if (startDate != null && endDate != null && startDate.equals(endDate)) {
+            result.add(startDate);
+            return result;
+        }
+        Date startDateValue = null;
+        Date endDateValue = null;
+        try {
+            startDateValue = IceConst.DATE_FORMAT.parse(startDate);
+            endDateValue = IceConst.DATE_FORMAT.parse(endDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long startLong = startDateValue.getTime();
+        long endLong = endDateValue.getTime();
+        if (startLong > endLong) {
+            Date tempDate = startDateValue;
+            startDateValue = endDateValue;
+            endDateValue = tempDate;
+            String tempDateStr = startDate;
+            startDate = endDate;
+            endDate = tempDateStr;
+            startLong = startDateValue.getTime();
+            endLong = endDateValue.getTime();
+        }
+        long curLong = startLong;
+        String curDateStr = startDate;
+        Date curDate = startDateValue;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(startDateValue);
+        while (curLong <= endLong) {
+            result.add(curDateStr);
+            int day = cal.get(Calendar.DAY_OF_YEAR);
+            cal.set(Calendar.DAY_OF_YEAR, day + 1);
+            curDate = cal.getTime();
+            curLong = curDate.getTime();
+            curDateStr = IceConst.DATE_FORMAT.format(curDate);
+        }
+        return result;
+    }
 }

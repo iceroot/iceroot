@@ -1,6 +1,7 @@
 package com.icexxx.util;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 
 /**
  * 常量工具类
@@ -36,5 +37,6 @@ public class IceConst {
     public static final String NUMS = "0123456789";// 数字
     public static final String CHARS = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";// 特殊字符
     public static final String SEPARATOR = "`<${separator}>`";// 特殊分隔符
-
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+    public static final SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 }

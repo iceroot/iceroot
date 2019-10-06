@@ -53,6 +53,7 @@ public class IceBox<T> {
             return false;
         if (getClass() != obj.getClass())
             return false;
+        @SuppressWarnings("rawtypes")
         IceBox other = (IceBox) obj;
         if (name == null) {
             if (other.name != null)

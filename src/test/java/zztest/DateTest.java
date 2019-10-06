@@ -15,14 +15,14 @@ public class DateTest {
 
     }
 
-    //@Test
+    // @Test
     public void diffDays() {
         Date date1 = IceUtil.parseDate("2015-12-12 23:59:59");
         Date date2 = IceUtil.parseDate("2015-12-13 00:00:01");
         print(IceUtil.dayLength(date1, date2));
     }
 
-    //@Test
+    // @Test
     public void diffDays2() {
         Date date1 = IceUtil.parseDate("2015-12-12 23:59:59");
         Date date2 = IceUtil.parseDate("2015-12-13 00:00:00");
