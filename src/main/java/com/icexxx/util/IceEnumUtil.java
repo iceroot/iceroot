@@ -23,7 +23,7 @@ public class IceEnumUtil {
         Class<T> clazz = (Class<T>) enums.getClass();
         Field field = null;
         try {
-            field = clazz.getField("code");
+            field = clazz.getDeclaredField("code");
         } catch (NoSuchFieldException e1) {
             e1.printStackTrace();
         } catch (SecurityException e1) {
