@@ -14,7 +14,7 @@ maven地址:<br/>
 &lt;dependency&gt;<br/>
 &nbsp;&nbsp;&lt;groupId&gt;com.icexxx&lt;/groupId&gt;<br/>
 &nbsp;&nbsp;&lt;artifactId&gt;iceroot&lt;/artifactId&gt;<br/>
-&nbsp;&nbsp;&lt;version&gt;2.0.1&lt;/version&gt;<br/>
+&nbsp;&nbsp;&lt;version&gt;2.0.4&lt;/version&gt;<br/>
 &lt;/dependency&gt;<br/>
 
 Iceroot
