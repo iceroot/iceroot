@@ -25,5 +25,14 @@ public class IceUtilTest6 {
         System.out.println(IceUtil.convertChar(676));
         System.out.println(IceUtil.convertChar(700));
         System.out.println(IceUtil.convertChar(701));
+        System.out.println("-----------------");
+        System.out.println(IceUtil.convertChar(702));
+        System.out.println(IceUtil.convertChar(703));
+        System.out.println(IceUtil.convertChar(704));
+        System.out.println(IceUtil.convertChar(18277));
+        System.out.println("-----------------");
+        System.out.println(IceUtil.convertChar(18278));
+        System.out.println(IceUtil.convertChar(18279));
+        System.out.println(IceUtil.convertChar(18280));
     }
 }

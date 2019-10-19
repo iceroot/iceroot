@@ -12,16 +12,19 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.UUID;
 import java.util.prefs.Preferences;
 
@@ -3442,18 +3445,26 @@ public class IceUtil {
         if (num < 0) {
             throw new RuntimeException("num必须大于0");
         }
-        if (num > 701) {
-            throw new RuntimeException("num必须小于等于701");
+        int sum = 0;
+        int last = 0;
+        long product = 1;
+        int depth = 0;
+        for (;; depth++) {
+            product = product * characterLength;
+            sum += product;
+            if (sum > num) {
+                break;
+            }
+            last = sum;
         }
-        if (num < characterLength) {
-            return (char) (num + 'A') + "";
-        }
+        int surplus = num - last;
         StringBuilder sb = new StringBuilder();
-        int sum = num - characterLength;
-        int cur = sum / characterLength;
-        sb.append((char) (cur + 'A') + "");
-        cur = sum - cur * characterLength;
-        sb.append((char) (cur % characterLength + 'A') + "");
+        while (depth-- >= 0) {
+            int small = surplus % characterLength;
+            surplus = (surplus - small) / characterLength;
+            char chr = (char) (small + 'A');
+            sb.insert(0, chr);
+        }
         return sb.toString();
     }
 
@@ -4000,6 +4011,132 @@ public class IceUtil {
             curDate = cal.getTime();
             curLong = curDate.getTime();
             curDateStr = IceConst.DATE_FORMAT.format(curDate);
+        }
+        return result;
+    }
+
+    /**
+     * 秒数转日期
+     * 
+     * @param seconds 需要转换的秒数
+     * @return 转换后的日期
+     * @version 2.0.4
+     */
+    public static Date second2date(long seconds) {
+        return new Date(seconds * 1000);
+    }
+
+    /**
+     * 日期转秒数
+     * 
+     * @param date 需要转换的日期
+     * @return 转换后的秒数
+     * @version 2.0.4
+     */
+    public static long date2second(Date date) {
+        long seconds = date.getTime();
+        return seconds / 1000;
+    }
+
+    /**
+     * 数组转List(二维)
+     * 
+     * @param list 需要转换的内容为数组的List
+     * @return 转换后的List
+     * @version 2.0.4
+     */
+    public static List<List<String>> array2List(List<String[]> list) {
+        List<List<String>> result = new ArrayList<List<String>>();
+        if (list == null || list.isEmpty()) {
+            return result;
+        }
+        for (int i = 0; i < list.size(); i++) {
+            String[] strings = list.get(i);
+            if (strings == null) {
+                result.add(new ArrayList<String>());
+            } else {
+                List<String> ele = Arrays.asList(strings);
+                result.add(ele);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * List转数组(二维)
+     * 
+     * @param list 需要转换的内容为List的List
+     * @return 转换后的List
+     * @version 2.0.4
+     */
+    public static List<String[]> list2array(List<List<String>> list) {
+        List<String[]> result = new ArrayList<String[]>();
+        if (list == null || list.isEmpty()) {
+            return result;
+        }
+        for (int i = 0; i < list.size(); i++) {
+            List<String> listInner = list.get(i);
+            if (listInner == null) {
+                String[] ele = {};
+                result.add(ele);
+            } else {
+                String[] ele = {};
+                ele = listInner.toArray(ele);
+                result.add(ele);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 摄氏转华氏
+     * 
+     * @param centigrade 摄氏温度
+     * @return 华氏温度
+     * @version 2.0.4
+     */
+    public static double temperature4c2f(double centigrade) {
+        return centigrade * 1.8 + 32d;
+    }
+
+    /**
+     * 华氏转摄氏
+     * 
+     * @param fahrenheit 华氏温度
+     * @return 摄氏温度
+     * @version 2.0.4
+     */
+    public static double temperature4f2c(double fahrenheit) {
+        return (fahrenheit - 32d) / 1.8;
+    }
+
+    /**
+     * map连续键值为空补0
+     * 
+     * @param map 原始map
+     * @return 转换后的map
+     * @version 2.0.4
+     */
+    public static Map<String, Long> dateListFillZero(Map<String, Long> map) {
+        Map<String, Long> result = new LinkedHashMap<String, Long>();
+        if (map == null || map.isEmpty()) {
+            return result;
+        }
+        TreeSet<String> set = new TreeSet<String>(map.keySet());
+        String first = set.first();
+        String last = set.last();
+        List<String> continuityDate = continuityDate(first, last);
+        if (continuityDate == null || continuityDate.isEmpty()) {
+            return result;
+        }
+        for (int i = 0; i < continuityDate.size(); i++) {
+            String currentDate = continuityDate.get(i);
+            Long value = map.get(currentDate);
+            if (value == null) {
+                result.put(currentDate, 0L);
+            } else {
+                result.put(currentDate, value);
+            }
         }
         return result;
     }
