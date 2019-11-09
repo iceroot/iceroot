@@ -4140,4 +4140,51 @@ public class IceUtil {
         }
         return result;
     }
+
+    /**
+     * 判断日期是否在两个日期之间
+     * 
+     * @param date 需要判断的日期
+     * @param startDate 开始日期
+     * @param endDate 结束日期
+     * @return 日期是否在两个日期之间
+     * @version 2.0.5
+     */
+    public static boolean betweenDate(Date date, Date startDate, Date endDate) {
+        if (date == null) {
+            return false;
+        }
+        if (startDate == null) {
+            if (endDate == null) {
+                return false;
+            } else {
+                long endSecond = endDate.getTime();
+                long dateSecond = date.getTime();
+                if (dateSecond < endSecond) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } else {
+            if (endDate == null) {
+                long startSecond = startDate.getTime();
+                long dateSecond = date.getTime();
+                if (dateSecond >= startSecond) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                long startSecond = startDate.getTime();
+                long endSecond = endDate.getTime();
+                long dateSecond = date.getTime();
+                if (dateSecond < endSecond && dateSecond >= startSecond) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
 }
