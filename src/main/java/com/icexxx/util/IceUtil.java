@@ -4187,4 +4187,82 @@ public class IceUtil {
             }
         }
     }
+
+    /**
+     * 按集合中元素的某个属性对集合进行排序
+     * @param &lt;T&gt; 泛型
+     * @param list 原始集合
+     * @param fieldName 需要排序的属性名称
+     * @return 排序后的集合
+     * @version 2.0.9
+     */
+    public static <T> List<T> sort(List<T> list, String fieldName) {
+        if (list == null || list.isEmpty()) {
+            return list;
+        }
+        T first = list.get(0);
+        @SuppressWarnings("unchecked")
+        Class<T> clazz = (Class<T>) first.getClass();
+        Field fieldOld = null;
+        try {
+            fieldOld = clazz.getDeclaredField(fieldName);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+        final Field field = fieldOld;
+        Comparator<T> comparator = new Comparator<T>() {
+
+            @SuppressWarnings({ "unchecked", "rawtypes" })
+            @Override
+            public int compare(T obj1, T obj2) {
+                if (obj1 == null) {
+                    return 1;
+                }
+                if (obj2 == null) {
+                    return -1;
+                }
+                Object value1 = null;
+                Object value2 = null;
+                try {
+                    field.setAccessible(true);
+                    field.setAccessible(true);
+                    value1 = field.get(obj1);
+                    value2 = field.get(obj2);
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                if (value1 == null) {
+                    return 1;
+                }
+                if (value2 == null) {
+                    return -1;
+                }
+                if (value1 instanceof Integer && value2 instanceof Integer) {
+                    return ((Integer) value1).compareTo((Integer) value2);
+                }
+                if (value1 instanceof String && value2 instanceof String) {
+                    return ((String) value1).compareTo((String) value2);
+                }
+                if (value1 instanceof Double && value2 instanceof Double) {
+                    return ((Double) value1).compareTo((Double) value2);
+                }
+                if (value1 instanceof Long && value2 instanceof Long) {
+                    return ((Long) value1).compareTo((Long) value2);
+                }
+                if (value1 instanceof Date && value2 instanceof Date) {
+                    return -((Date) value1).compareTo((Date) value2);
+                }
+                if (value1 instanceof Comparable && value2 instanceof Comparable) {
+                    return ((Comparable) value1).compareTo((Comparable) value2);
+                }
+                throw new RuntimeException("没有可用的排序器");
+            }
+        };
+        Collections.sort(list, comparator);
+        return list;
+    }
 }
